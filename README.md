@@ -4,7 +4,7 @@
 
 - 본인의 깃헙 아이디 브랜치를 생성한다. ex) currenjin <-- main 역할
 - 해당 브랜치에서 작업용 브랜치를 생성한다. ex) currenjin/features <-- feature 역할
-- 작업이 완료되면 본인의 깃헙 아이디 브랜치로 PR을 올린다. ex) currenjin <- currenjin/features PR
+- 작업이 완료되면 본인의 깃헙 아이디 브랜치로 PR을 올린다. ex) currenjin <- currenjin-features PR
 - 리뷰를 진행하고 모든 참여자가 Approve하면 Merge한다.
 
 ## 기능 요구 사항
