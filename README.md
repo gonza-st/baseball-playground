@@ -1,6 +1,6 @@
 # Baseball Playground
 
-## 브랜치
+## 브랜치 전략
 
 - 본인의 깃헙 아이디 브랜치를 생성한다. ex) `currenjin` <-- main 역할
 - 해당 브랜치에서 작업용 브랜치를 생성한다. ex) `currenjin/features` <-- feature 역할
