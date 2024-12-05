@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class BaseBallTest {
+public class ReaderTest {
     private Validator validator;
     private Scanner scanner;
 
