@@ -7,9 +7,14 @@ import java.util.Random;
 public class NumberGenerator {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
+    private final Validator validator;
+
+    public NumberGenerator(Validator validator) {
+        this.validator = validator;
+    }
 
     public List<Integer> generatorRandomNumber(int size) {
-        validateSize(size);
+        validator.validate(size);
 
         List<Integer> numberList = new ArrayList<>();
         Random random = new Random();
@@ -21,11 +26,5 @@ public class NumberGenerator {
             }
         }
         return numberList;
-    }
-
-    private void validateSize(int size) {
-        if (size < MIN_NUMBER || size > MAX_NUMBER) {
-            throw new IllegalArgumentException("생성할 숫자의 개수는 1에서 9 사이여야 합니다.");
-        }
     }
 }

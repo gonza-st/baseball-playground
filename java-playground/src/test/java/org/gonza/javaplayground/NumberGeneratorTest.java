@@ -12,10 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class NumberGeneratorTest {
     private NumberGenerator generator;
+    private Validator validator;
 
     @BeforeEach
     void setUp() {
-        generator = new NumberGenerator();
+        validator = new Validator();
+        generator = new NumberGenerator(validator);
     }
 
     @Test

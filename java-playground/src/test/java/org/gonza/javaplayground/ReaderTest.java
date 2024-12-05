@@ -18,7 +18,7 @@ public class ReaderTest {
 
     @BeforeEach
     void setUp() {
-        validator = new ConsoleValidator();
+        validator = new Validator();
     }
 
     @Test
