@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ReaderTest {
@@ -32,7 +33,7 @@ public class ReaderTest {
         String expect = reader.read();
 
         //then
-        Assertions.assertThat(expect).isEqualTo("123");
+        assertThat(expect).isEqualTo("123");
     }
 
     @DisplayName("입력 받은 값이 숫자가 아닐시 예외")
