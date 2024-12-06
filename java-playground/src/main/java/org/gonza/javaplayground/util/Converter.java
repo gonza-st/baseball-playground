@@ -1,4 +1,4 @@
-package org.gonza.javaplayground;
+package org.gonza.javaplayground.util;
 
 import java.util.List;
 import java.util.stream.Collectors;

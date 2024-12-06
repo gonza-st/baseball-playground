@@ -1,4 +1,7 @@
-package org.gonza.javaplayground;
+package org.gonza.javaplayground.core;
+
+import org.gonza.javaplayground.util.Converter;
+import org.gonza.javaplayground.view.Reader;
 
 import java.util.List;
 

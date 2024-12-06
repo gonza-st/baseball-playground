@@ -1,4 +1,4 @@
-package org.gonza.javaplayground;
+package org.gonza.javaplayground.core;
 
 public final class RuleConstants {
     public static final int MIN_NUMBER = 1;

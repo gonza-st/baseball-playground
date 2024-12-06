@@ -1,5 +1,10 @@
 package org.gonza.javaplayground;
 
+import org.gonza.javaplayground.core.Game;
+import org.gonza.javaplayground.core.Judgement;
+import org.gonza.javaplayground.core.NumberGenerator;
+import org.gonza.javaplayground.core.RuleConstants;
+import org.gonza.javaplayground.view.Reader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

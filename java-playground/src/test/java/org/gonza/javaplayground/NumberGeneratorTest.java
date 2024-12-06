@@ -1,5 +1,6 @@
 package org.gonza.javaplayground;
 
+import org.gonza.javaplayground.core.NumberGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,12 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class NumberGeneratorTest {
     private NumberGenerator generator;
-    private Validator validator;
 
     @BeforeEach
     void setUp() {
-        validator = new Validator();
-        generator = new NumberGenerator(validator);
+        generator = new NumberGenerator();
     }
 
     @Test
