@@ -1,20 +1,23 @@
-package org.gonza.javaplayground;
+package org.gonza.javaplayground.view;
+
+import org.gonza.javaplayground.util.Validator;
 
 import java.util.Scanner;
 
 public class ConsoleReader implements Reader {
     private final Scanner scanner;
-    private final Validator validator;
 
-    public ConsoleReader(Scanner scanner, Validator validator) {
+    public ConsoleReader(Scanner scanner) {
         this.scanner = scanner;
-        this.validator = validator;
     }
 
     @Override
     public String read() {
         String input = scanner.nextLine();
-        validator.validate(input);
+        Validator.validateNumeric(input);
+        Validator.validateDuplication(input);
+        Validator.validateLength(input);
+
         return input;
     }
 

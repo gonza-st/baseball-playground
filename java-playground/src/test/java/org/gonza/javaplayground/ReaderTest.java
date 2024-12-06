@@ -1,6 +1,7 @@
 package org.gonza.javaplayground;
 
-import org.assertj.core.api.Assertions;
+import org.gonza.javaplayground.view.ConsoleReader;
+import org.gonza.javaplayground.util.Validator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -86,6 +87,6 @@ public class ReaderTest {
 
     private ConsoleReader createReader(String input) {
         scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
-        return new ConsoleReader(scanner, validator);
+        return new ConsoleReader(scanner);
     }
 }
