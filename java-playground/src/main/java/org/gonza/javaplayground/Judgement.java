@@ -55,7 +55,7 @@ public class Judgement {
         return count;
     }
 
-    public boolean hasNumberInPlace(List<Integer> computers, int placeIndex, int number) {
+    private boolean hasNumberInPlace(List<Integer> computers, int placeIndex, int number) {
         return computers.get(placeIndex) == number;
     }
 }

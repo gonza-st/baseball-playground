@@ -17,4 +17,9 @@ public class ConsoleReader implements Reader {
         validator.validate(input);
         return input;
     }
+
+    @Override
+    public String readWithoutValidation() {
+        return scanner.nextLine();
+    }
 }
