@@ -9,6 +9,9 @@ class BaseballTest {
     fun `갈은 수가 전혀 없는 경우 Nothing 을 반환한다`() {
         val expectedNumber = BaseBallNumber("123")
         val inputNumber = BaseBallNumber("456")
+        val ballpark = BallPark()
+        val inputView = InputView()
+        val resultView = ResultView()
 
         assertEquals(expectedNumber, inputNumber)
     }
