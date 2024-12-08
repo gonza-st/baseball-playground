@@ -17,22 +17,28 @@
 - 사용자 -> Client
 - 숫자야구 게임 -> Game
 - 숫자 만드는 놈 -> NumberGenerator
-- 정답 가진놈 -> Any
+- 심판 -> Referee 
 
 
 게임 순서 ?
 
 1. (Client) 메시지 : 게임을 시작해주세요 -> Game
-2. (Game) 메시지 : 맞춰야할 숫자를 만들어주세요 -> Any
+2. (Game) 메시지 : 맞춰야할 숫자를 만들어주세요 -> NumberGenerator
 3. (Game) 메시지 : 사용자가 입력한 숫자를 주세요 -> InputView
-4. (Game) 메시지 : 입력한 숫자 줄테니까네 결과 알려줘 -> Any
-5. (Game) 메시지 : 안맞췄으니까 결과 보여줘 -> InputView
-6. (Game) 메시지 : 안맞췄으니까 다시 사용자가 입력한 숫자 주셈 -> InputView
-7. (Game) 메시지 : 4번 다시 꼬우 
-8. (Game) 메시지 : 맞췄으면 결과 보여줘 -> InputView
-9. (Game) 메시지 : 맞췄으면 성공 메시지 보여줘 -> InputView
-10. (Game) 메시지 : 맞췄으면 게임종료 메시지 보여줘 -> InputView
-11. 
+4. (Game) 메시지 : 입력한 숫자 줄테니까네 결과 알려줘 -> Referee
+5. 정답 X
+    1. (Game) 메시지 : 안맞췄으니까 결과 보여줘 -> InputView
+    2. (Game) 메시지 : 안맞췄으니까 다시 사용자가 입력한 숫자 주셈 -> InputView
+    3. (Game) 메시지 : 4번 다시 꼬우 
+6. 정답 O
+    1. (Game) 메시지 : 맞췄으면 결과 보여줘 -> InputView
+    2. (Game) 메시지 : 맞췄으면 성공 메시지 보여줘 -> InputView
+    3. (Game) 메시지 : 맞췄으면 게임종료 메시지 보여줘 -> InputView
+7. (Game) 메시지 : 게임 재시작 할꺼야 ? -> InputView
+8. 재시작 X
+    1. (Game) 메시지 : 게임 끝났다 -> Client
+9. 재시작 O
+    1. (Game) 메시지 : 게임 재시작 한다 -> Client
 
 사용자 입력
 
