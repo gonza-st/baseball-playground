@@ -41,7 +41,7 @@ public class BaseballGameNumberTest {
     @DisplayName("입력된 값은 숫자여야 한다")
     @Test
     void createWithInputNumber() {
-        assertThatThrownBy(() -> new InputNumber("12k"))
+        assertThatThrownBy(() -> new BaseballGameNumber("12k"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
