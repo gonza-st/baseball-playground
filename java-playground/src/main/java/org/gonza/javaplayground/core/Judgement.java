@@ -14,6 +14,10 @@ public class Judgement {
         return result;
     }
 
+    public boolean isGameWon(String result) {
+        return result.equals(RuleConstants.REQUIRED_LENGTH + "스트라이크");
+    }
+
     private String getResult(int correctCount, int strike, int ball) {
         if (correctCount == 0) {
             return "아웃";

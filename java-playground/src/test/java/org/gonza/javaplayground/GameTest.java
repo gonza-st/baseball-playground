@@ -4,6 +4,7 @@ import org.gonza.javaplayground.core.Game;
 import org.gonza.javaplayground.core.Judgement;
 import org.gonza.javaplayground.core.NumberGenerator;
 import org.gonza.javaplayground.core.RuleConstants;
+import org.gonza.javaplayground.view.Printer;
 import org.gonza.javaplayground.view.Reader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -29,11 +30,14 @@ class GameTest {
     @Mock
     private Judgement judgement;
 
+    @Mock
+    private Printer printer;
+
     private Game game;
 
     @BeforeEach
     void setUp() {
-        game = new Game(numberGenerator, reader, judgement);
+        game = new Game(numberGenerator, reader, judgement, printer);
     }
 
     @Test
