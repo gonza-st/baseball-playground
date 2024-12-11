@@ -18,6 +18,7 @@
 - 숫자야구 게임 -> Game
 - 숫자 만드는 놈 -> NumberGenerator
 - 심판 -> Referee 
+- 결과 -> Result (Ball, Strike)
 
 
 게임 순서 ?
@@ -49,7 +50,6 @@
 
 - InputView (Console) -> Game (게임)
 - (메시지, 행위) InputView -> 게임을 시작해주세요 -> Game 
-- 
 
 
 
