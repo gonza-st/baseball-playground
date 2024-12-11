@@ -1,4 +1,4 @@
-package org.gonza.javaplayground;
+package org.gonza.javaplayground.core;
 
 import org.gonza.javaplayground.view.ConsoleReader;
 import org.gonza.javaplayground.util.Validator;

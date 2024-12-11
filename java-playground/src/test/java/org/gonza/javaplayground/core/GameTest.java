@@ -1,4 +1,4 @@
-package org.gonza.javaplayground;
+package org.gonza.javaplayground.core;
 
 import org.gonza.javaplayground.core.Game;
 import org.gonza.javaplayground.core.Judgement;
