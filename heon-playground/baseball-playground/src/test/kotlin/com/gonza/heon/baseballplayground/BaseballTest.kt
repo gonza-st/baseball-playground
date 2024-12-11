@@ -10,8 +10,9 @@ class BaseballTest {
         val expectedNumber = BaseBallNumber("123")
         val inputNumber = BaseBallNumber("456")
         val ballpark = BallPark()
-        val inputView = InputView()
-        val resultView = ResultView()
+        ballpark.play()
+        val inputView = InputView.getInstance()
+        val resultView = ResultView.getInstance()
 
         assertEquals(expectedNumber, inputNumber)
     }
