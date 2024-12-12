@@ -2,5 +2,5 @@ package org.gonza.javaplayground.domain;
 
 public interface Result {
 
-    int judge(int answer, int[] numberList);
+    boolean correct(int answer, int number);
 }
