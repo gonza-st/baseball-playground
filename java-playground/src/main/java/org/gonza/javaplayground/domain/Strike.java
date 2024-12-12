@@ -1,9 +1,11 @@
 package org.gonza.javaplayground.domain;
 
+import java.util.Arrays;
+
 public class Strike implements Result {
 
     @Override
     public boolean correct(int[] answer, int[] number) {
-        return answer == number;
+        return Arrays.equals(answer, number);
     }
 }
