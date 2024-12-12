@@ -3,14 +3,24 @@ package com.gonza.heon.baseballplayground
 import java.util.*
 
 class BallPark {
-    fun play() {
-        val correct = generateNumber()
 
+    private val inputView = InputView.getInstance()
+    private val resultView = ResultView.getInstance()
+
+    fun play() {
+        val target = generateNumber()
 
     }
 
-    private fun inning(correct: BaseBallNumber) {
-        // TODO while 대신 재귀적 방식으로 풀기 ?
+    private fun inning(target: BaseBallNumber) {
+        val answer = inputView.answer()
+        val isCorrect = target.isEquals(answer)
+
+        if (isCorrect) {
+
+        }
+
+        return inning(target)
     }
 
     private fun generateNumber(): BaseBallNumber {
