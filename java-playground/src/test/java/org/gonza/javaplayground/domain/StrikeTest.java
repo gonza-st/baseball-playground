@@ -32,4 +32,16 @@ class StrikeTest {
         assertThat(twoMatchedIndices).isEqualTo(List.of(0, 1));
         assertThat(betweenMatchedIndices).isEqualTo(List.of(0, 2));
     }
+
+    @Test
+    void 정답과_입력한_숫자가_스크라이크가_아니라면_일치하는_인덱스는_비어있다() {
+        List<Integer> notMatched = List.of(9, 8, 7);
+        List<Integer> answer = List.of(1, 2, 3);
+        Strike strike = new Strike();
+
+        List<Integer> notMatchedIndices = strike.findIndices(answer, notMatched);
+
+        assertThat(notMatchedIndices).hasSize(0);
+        assertThat(notMatchedIndices).isEmpty();
+    }
 }
