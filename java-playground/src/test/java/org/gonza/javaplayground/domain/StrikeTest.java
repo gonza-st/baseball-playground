@@ -2,51 +2,34 @@ package org.gonza.javaplayground.domain;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class StrikeTest {
 
     @Test
-    void 해당_숫자가_모두_일치하다면_결과는_참이다() {
-        int[] correctNumber = {1, 2, 3};
-        int[] answer = {1, 2, 3};
+    void 정답과_입력한_숫자가_스트라이크라면_일치하는_인덱스를_반환한다() {
+        List<Integer> allMatched = List.of(1, 2, 3);
+        List<Integer> oneMatched = List.of(1, 5, 5);
+        List<Integer> twoMatched = List.of(1, 2, 5);
+        List<Integer> betweenMatched = List.of(1, 5, 3);
+        List<Integer> answer = List.of(1, 2, 3);
         Strike strike = new Strike();
 
-        boolean isStrike = strike.correct(answer, correctNumber);
+        List<Integer> allMatchedIndices = strike.findIndices(answer, allMatched);
+        List<Integer> oneMatchedIndices = strike.findIndices(answer, oneMatched);
+        List<Integer> twoMatchedIndices = strike.findIndices(answer, twoMatched);
+        List<Integer> betweenMatchedIndices = strike.findIndices(answer, betweenMatched);
 
-        assertThat(isStrike).isTrue();
-    }
+        assertThat(allMatchedIndices).hasSize(3);
+        assertThat(oneMatchedIndices).hasSize(1);
+        assertThat(twoMatchedIndices).hasSize(2);
+        assertThat(betweenMatchedIndices).hasSize(2);
 
-    @Test
-    void 해당_숫자가_모두_일치하지_않다면_결과는_거짓이다() {
-        int[] wrongNumber = {1, 2, 3};
-        int[] answer = {9, 9, 9};
-        Strike strike = new Strike();
-
-        boolean isWrong = strike.correct(answer, wrongNumber);
-
-        assertThat(isWrong).isFalse();
-    }
-
-    @Test
-    void 해당_숫자의_위치가_동일하면서_값도_일치한다면_결과는_참이다() {
-        int[] number = {1, 2, 3};
-        int[] answer = {1, 4, 4};
-        Strike strike = new Strike();
-
-        boolean isStrike = strike.correct(answer, number);
-
-        assertThat(isStrike).isTrue();
-    }
-
-    @Test
-    void 해당_숫자의_위치가_같지않지만_값이_일치할경우_결과는_거짓이다() {
-        int[] number = {1, 2, 3};
-        int[] answer = {3, 5, 1};
-        Strike strike = new Strike();
-
-        boolean isStrike = strike.correct(answer, number);
-
-        assertThat(isStrike).isFalse();
+        assertThat(allMatchedIndices).isEqualTo(List.of(0, 1, 2));
+        assertThat(oneMatchedIndices).isEqualTo(List.of(0));
+        assertThat(twoMatchedIndices).isEqualTo(List.of(0, 1));
+        assertThat(betweenMatchedIndices).isEqualTo(List.of(0, 2));
     }
 }

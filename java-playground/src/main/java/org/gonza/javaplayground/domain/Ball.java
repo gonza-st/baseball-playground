@@ -1,16 +1,12 @@
 package org.gonza.javaplayground.domain;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Ball implements Result {
+
     @Override
-    public boolean correct(int[] answer, int[] number) {
-        return Arrays.stream(answer).
-                anyMatch(value -> contains(number, value));
+    public List<Integer> findIndices(List<Integer> answer, List<Integer> number) {
+        return List.of();
     }
 
-    private boolean contains(int[] number, int value) {
-        return Arrays.stream(number).
-                anyMatch(num -> num == value);
-    }
 }

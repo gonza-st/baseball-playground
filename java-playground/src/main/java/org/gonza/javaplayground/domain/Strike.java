@@ -1,12 +1,17 @@
 package org.gonza.javaplayground.domain;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class Strike implements Result {
 
     @Override
-    public boolean correct(int[] answer, int[] number) {
-        return IntStream.range(0, answer.length)
-                .anyMatch(i -> answer[i] == number[i]);
+    public List<Integer> findIndices(List<Integer> answer, List<Integer> number) {
+        int START_INDEX = 0;
+        return IntStream.range(START_INDEX, answer.size())
+                .filter(i -> answer.get(i).equals(number.get(i)))
+                .boxed()
+                .toList();
     }
+
 }

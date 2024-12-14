@@ -1,6 +1,8 @@
 package org.gonza.javaplayground.domain;
 
+import java.util.List;
+
 public interface Result {
 
-    boolean correct(int[] answer, int[] number);
+    List<Integer> findIndices(List<Integer> answer, List<Integer> number);
 }
