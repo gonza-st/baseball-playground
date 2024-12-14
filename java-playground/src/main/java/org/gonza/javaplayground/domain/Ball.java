@@ -14,4 +14,9 @@ public class Ball implements Result {
                 .toList();
     }
 
+    @Override
+    public List<Result> create(int size) {
+        return List.of();
+    }
+
 }

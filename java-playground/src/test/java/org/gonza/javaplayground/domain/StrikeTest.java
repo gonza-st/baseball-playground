@@ -44,4 +44,15 @@ class StrikeTest {
         assertThat(notMatchedIndices).hasSize(0);
         assertThat(notMatchedIndices).isEmpty();
     }
+
+    @Test
+    void 입력한_사이즈에_맞는_스트라이크를_생성한다() {
+        int size = 3;
+        Strike strike = new Strike();
+
+        List<Result> resultList = strike.create(size);
+
+        assertThat(resultList).hasSize(3);
+        assertThat(resultList).allMatch(result -> result instanceof Strike);
+    }
 }
