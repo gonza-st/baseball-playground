@@ -20,4 +20,30 @@ class RefereeTest {
                 .isInstanceOf(InvalidLengthException.class);
     }
 
+    @Test
+    void 입력한_값이_모두_스트라이크라면_모든_결과_리스트는_스트라이크이다() {
+        int number = 123;
+        List<Integer> answerNumber = List.of(1, 2, 3);
+        Answer answer = new Answer(answerNumber);
+        Referee referee = new Referee();
+
+        List<Result> resultList = referee.judge(answer, number);
+
+        assertThat(resultList).hasSize(3);
+        assertThat(resultList).allMatch(result -> result instanceof Strike);
+    }
+
+    @Test
+    void 입력한_값이_모두_볼이라면_모든_결과_리스트는_볼이다() {
+        int number = 123;
+        List<Integer> answerNumber = List.of(3, 1, 2);
+        Answer answer = new Answer(answerNumber);
+        Referee referee = new Referee();
+
+        List<Result> resultList = referee.judge(answer, number);
+
+        assertThat(resultList).hasSize(3);
+        assertThat(resultList).allMatch(result -> result instanceof Ball);
+    }
+
 }
