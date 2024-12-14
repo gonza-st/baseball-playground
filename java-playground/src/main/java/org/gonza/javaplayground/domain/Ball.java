@@ -2,6 +2,7 @@ package org.gonza.javaplayground.domain;
 
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Ball implements Result {
 
@@ -16,7 +17,10 @@ public class Ball implements Result {
 
     @Override
     public List<Result> create(int size) {
-        return List.of();
+        return Stream.generate(Ball::new)
+                .limit(size)
+                .map(ball -> (Result) ball)
+                .toList();
     }
 
 }

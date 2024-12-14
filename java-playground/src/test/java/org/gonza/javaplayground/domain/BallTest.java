@@ -40,4 +40,15 @@ class BallTest {
         assertThat(notMatchedIndices).hasSize(0);
         assertThat(notMatchedIndices).isEmpty();
     }
+
+    @Test
+    void 입력한_사이즈에_맞는_볼을_생성한다() {
+        int size = 3;
+        Ball ball = new Ball();
+
+        List<Result> resultList = ball.create(size);
+
+        assertThat(resultList).hasSize(3);
+        assertThat(resultList).allMatch(result -> result instanceof Ball);
+    }
 }
