@@ -38,4 +38,15 @@ class StrikeTest {
 
         assertThat(isStrike).isTrue();
     }
+
+    @Test
+    void 해당_숫자의_위치가_같지않지만_값이_일치할경우_결과는_거짓이다() {
+        int[] number = {1, 2, 3};
+        int[] answer = {3, 5, 1};
+        Strike strike = new Strike();
+
+        boolean isStrike = strike.correct(answer, number);
+
+        assertThat(isStrike).isFalse();
+    }
 }
