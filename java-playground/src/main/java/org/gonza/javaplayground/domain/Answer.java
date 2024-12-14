@@ -1,5 +1,6 @@
 package org.gonza.javaplayground.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Answer {
@@ -18,5 +19,9 @@ public class Answer {
     public List<Integer> findBall(List<Integer> number) {
         Ball ball = new Ball();
         return ball.findIndices(answer, number);
+    }
+
+    public List<Integer> getCorrectNumber() {
+        return new ArrayList<>(answer);
     }
 }
