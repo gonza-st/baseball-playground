@@ -10,4 +10,13 @@ public class InputParser {
                 .boxed()
                 .toList();
     }
+
+    public List<Integer> parseToList(String input) {
+        return input
+                .chars()
+                .filter(Character::isDigit)
+                .map(Character::getNumericValue)
+                .boxed()
+                .toList();
+    }
 }
