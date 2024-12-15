@@ -22,6 +22,10 @@ class OutputView {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    public void printErrorMessage(String errorMessage) {
+        System.out.println(errorMessage);
+    }
+
     private static class Output {
         private final Map<Result, Integer> resultCountMap = new HashMap<>();
 

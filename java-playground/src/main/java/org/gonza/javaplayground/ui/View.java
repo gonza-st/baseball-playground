@@ -17,6 +17,10 @@ public class View {
         return inputView.inputRestartOrExit();
     }
 
+    public void printErrorMessage(String errorMessage) {
+        outputView.printErrorMessage(errorMessage);
+    }
+
     public void printResult(List<Result> resultList) {
         outputView.printResult(resultList);
     }
