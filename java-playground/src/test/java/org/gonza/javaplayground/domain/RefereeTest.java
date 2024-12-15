@@ -66,4 +66,28 @@ class RefereeTest {
         assertThat(isAllStrike).isFalse();
     }
 
+    @Test
+    void 입력한_값_중_검증된_값은_제외한후_검증을_해야한다() {
+        int oneStrike1 = 123;
+        int oneStrike2 = 129;
+        int oneStrikeOneBall = 156;
+        List<Integer> answerNumber = List.of(1, 4, 5);
+        Answer answer = new Answer(answerNumber);
+        Referee referee = new Referee();
+
+        List<Result> resultList1 = referee.judge(answer, oneStrike1);
+        List<Result> resultList2 = referee.judge(answer, oneStrike2);
+        List<Result> resultList3 = referee.judge(answer, oneStrikeOneBall);
+
+        assertThat(resultList1).hasSize(1);
+        assertThat(resultList1).allMatch(result -> result instanceof Strike);
+
+        assertThat(resultList2).hasSize(1);
+        assertThat(resultList2).allMatch(result -> result instanceof Strike);
+
+        assertThat(resultList3).hasSize(2);
+        assertThat(resultList3.getFirst()).isInstanceOf(Strike.class);
+        assertThat(resultList3.get(1)).isInstanceOf(Ball.class);
+    }
+
 }
