@@ -1,7 +1,7 @@
 package org.gonza.javaplayground.domain;
 
 import org.gonza.javaplayground.exception.DuplicateValueException;
-import org.gonza.javaplayground.exception.ExceedsMaxLengthException;
+import org.gonza.javaplayground.exception.InvalidNumberLengthException;
 import org.gonza.javaplayground.exception.InvalidLengthException;
 import org.gonza.javaplayground.exception.NotNumberIncludedException;
 import org.junit.jupiter.api.Test;
@@ -39,8 +39,18 @@ class RuleTest {
         Rule rule = new Rule();
 
         assertThatThrownBy(() -> rule.validateMaxSize(number))
-                .isInstanceOf(ExceedsMaxLengthException.class)
-                .hasMessage("입력한 값이 3자리 수를 초과합니다");
+                .isInstanceOf(InvalidNumberLengthException.class)
+                .hasMessage("입력한 값이 3자리수가 아닙니다.");
+    }
+
+    @Test
+    void 입력한_값이_3자리_수_미만이라면_예외가_발생한다() {
+        List<Integer> number = List.of(1, 2);
+        Rule rule = new Rule();
+
+        assertThatThrownBy(() -> rule.validateMaxSize(number))
+                .isInstanceOf(InvalidNumberLengthException.class)
+                .hasMessage("입력한 값이 3자리수가 아닙니다.");
     }
 
     @Test

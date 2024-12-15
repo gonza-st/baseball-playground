@@ -1,7 +1,7 @@
 package org.gonza.javaplayground.domain;
 
 import org.gonza.javaplayground.exception.DuplicateValueException;
-import org.gonza.javaplayground.exception.ExceedsMaxLengthException;
+import org.gonza.javaplayground.exception.InvalidNumberLengthException;
 import org.gonza.javaplayground.exception.InvalidLengthException;
 import org.gonza.javaplayground.exception.NotNumberIncludedException;
 import org.gonza.javaplayground.ui.View;
@@ -68,7 +68,7 @@ public class Game {
                 rule.validateDuplicateValue(number);
                 rule.validateMaxSize(number);
                 return Integer.parseInt(input);
-            } catch (NotNumberIncludedException | ExceedsMaxLengthException | DuplicateValueException e) {
+            } catch (NotNumberIncludedException | InvalidNumberLengthException | DuplicateValueException e) {
                 view.printErrorMessage(e.getMessage());
             }
         }
