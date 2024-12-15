@@ -31,6 +31,10 @@ public class Referee {
         return resultList;
     }
 
+    public boolean isAllStrike(List<Result> resultList) {
+        return resultList.stream().allMatch(result -> result instanceof Strike);
+    }
+
     private List<Integer> extractNotStrike(List<Integer> strikeIndices, List<Integer> numberList) {
         int START_INDEX = 0;
         return IntStream.range(START_INDEX, numberList.size())

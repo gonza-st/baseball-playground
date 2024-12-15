@@ -46,4 +46,24 @@ class RefereeTest {
         assertThat(resultList).allMatch(result -> result instanceof Ball);
     }
 
+    @Test
+    void 입력한_모든_값이_스트라이크_라면_결과는_참이다() {
+        List<Result> resultList = List.of(new Strike(), new Strike(), new Strike());
+        Referee referee = new Referee();
+
+        boolean isAllStrike = referee.isAllStrike(resultList);
+
+        assertThat(isAllStrike).isTrue();
+    }
+
+    @Test
+    void 입력한_값_중_하나라도_스트라이크가_아니라면_결과는_거짓이다() {
+        List<Result> resultList = List.of(new Ball(), new Strike(), new Strike());
+        Referee referee = new Referee();
+
+        boolean isAllStrike = referee.isAllStrike(resultList);
+
+        assertThat(isAllStrike).isFalse();
+    }
+
 }
