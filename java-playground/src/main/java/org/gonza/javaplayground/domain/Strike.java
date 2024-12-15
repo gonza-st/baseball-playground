@@ -23,4 +23,9 @@ public class Strike implements Result {
                 .toList();
     }
 
+    @Override
+    public String toString() {
+        return "스트라이크";
+    }
+
 }

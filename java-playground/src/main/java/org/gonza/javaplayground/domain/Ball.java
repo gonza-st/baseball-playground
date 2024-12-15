@@ -23,4 +23,9 @@ public class Ball implements Result {
                 .toList();
     }
 
+    @Override
+    public String toString() {
+        return "볼";
+    }
+
 }
