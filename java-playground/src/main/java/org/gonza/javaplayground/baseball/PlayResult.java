@@ -21,4 +21,8 @@ public class PlayResult {
 	public int getStrike() {
 		return this.strike;
 	}
+
+	public boolean isGameEnd(Integer endNumber) {
+		return endNumber == this.strike;
+	}
 }
