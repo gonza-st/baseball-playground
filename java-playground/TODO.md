@@ -7,7 +7,7 @@ Balls
 - [x] Nothing
 - [x] Ball
 - [x] Strike
-- [ ] 1ball 0strike
-- [ ] 4ball 0strike
-- [ ] 0ball 1strike
-- [ ] 0ball 4strike
+- [x] 1ball 0strike
+- [x] 3ball 0strike
+- [x] 0ball 1strike
+- [x] 0ball 3strike
