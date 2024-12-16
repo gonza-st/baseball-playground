@@ -9,15 +9,15 @@ public class Ball {
         this.number = number;
     }
 
-    public BallResult play(Ball ball) {
+    public BallStatus play(Ball ball) {
         if (ball.position == this.position && ball.number == this.number) {
-            return BallResult.STRIKE;
+            return BallStatus.STRIKE;
         }
 
         if (ball.number == this.number) {
-            return BallResult.BALL;
+            return BallStatus.BALL;
         }
 
-        return BallResult.NOTHING;
+        return BallStatus.NOTHING;
     }
 }

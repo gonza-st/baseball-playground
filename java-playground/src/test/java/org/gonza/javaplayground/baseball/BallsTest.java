@@ -60,26 +60,26 @@ class BallsTest {
 	void nothing() {
 		Balls balls = new Balls(Lists.newArrayList(1, 2, 3));
 
-		BallResult result = balls.play(new Ball(1, 4));
+		BallStatus status = balls.play(new Ball(1, 4));
 
-		assertEquals(result, BallResult.NOTHING);
+		assertEquals(status, BallStatus.NOTHING);
 	}
 
 	@Test
 	void ball() {
 		Balls balls = new Balls(Lists.newArrayList(1, 2, 3));
 
-		BallResult result = balls.play(new Ball(1, 3));
+		BallStatus status = balls.play(new Ball(1, 3));
 
-		assertEquals(result, BallResult.BALL);
+		assertEquals(status, BallStatus.BALL);
 	}
 
 	@Test
 	void strike() {
 		Balls balls = new Balls(Lists.newArrayList(1, 2, 3));
 
-		BallResult result = balls.play(new Ball(1, 1));
+		BallStatus status = balls.play(new Ball(1, 1));
 
-		assertEquals(result, BallResult.STRIKE);
+		assertEquals(status, BallStatus.STRIKE);
 	}
 }

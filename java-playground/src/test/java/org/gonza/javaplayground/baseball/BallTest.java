@@ -1,9 +1,9 @@
 package org.gonza.javaplayground.baseball;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BallTest {
     @Test
@@ -12,9 +12,9 @@ class BallTest {
         Ball ball = new Ball(1, 2);
         Ball target = new Ball(1, 3);
 
-        BallResult result = target.play(ball);
+        BallStatus status = target.play(ball);
 
-        assertEquals(result, BallResult.NOTHING);
+        assertEquals(status, BallStatus.NOTHING);
     }
 
     @Test
@@ -23,9 +23,9 @@ class BallTest {
         Ball ball = new Ball(2, 2);
         Ball target = new Ball(1, 2);
 
-        BallResult result = target.play(ball);
+        BallStatus status = target.play(ball);
 
-        assertEquals(result, BallResult.BALL);
+        assertEquals(status, BallStatus.BALL);
     }
 
     @Test
@@ -34,8 +34,8 @@ class BallTest {
         Ball ball = new Ball(2, 2);
         Ball target = new Ball(2, 2);
 
-        BallResult result = target.play(ball);
+        BallStatus status = target.play(ball);
 
-        assertEquals(result, BallResult.STRIKE);
+        assertEquals(status, BallStatus.STRIKE);
     }
 }

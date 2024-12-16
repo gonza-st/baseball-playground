@@ -24,18 +24,18 @@ public class Balls {
 		PlayResult playResult = new PlayResult();
 
 		this.ballList.forEach(ball -> {
-			BallResult ballResult = targetBalls.play(ball);
-			playResult.report(ballResult);
+			BallStatus ballStatus = targetBalls.play(ball);
+			playResult.report(ballStatus);
 		});
 
 		return playResult;
 	}
 
-	public BallResult play(Ball targetBall) {
+	public BallStatus play(Ball targetBall) {
 		return this.ballList.stream()
 			.map(ball -> ball.play(targetBall))
-			.filter(BallResult::isNotNothing)
+			.filter(BallStatus::isNotNothing)
 			.findFirst()
-			.orElse(BallResult.NOTHING);
+			.orElse(BallStatus.NOTHING);
 	}
 }

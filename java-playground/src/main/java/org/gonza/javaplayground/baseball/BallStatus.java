@@ -1,6 +1,6 @@
 package org.gonza.javaplayground.baseball;
 
-public enum BallResult {
+public enum BallStatus {
     BALL, STRIKE, NOTHING;
 
 	public boolean isNotNothing() {
