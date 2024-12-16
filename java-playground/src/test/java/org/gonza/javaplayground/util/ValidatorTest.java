@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class ValidatorTest {
 
 	@Test
-	@DisplayName("숫자_1_9_사이인지_검증")
+	@DisplayName("1 에서 9 사이 숫자는 유효하다")
 	void between_1_and_9() {
 		assertThat(Validator.validNumber(1)).isTrue();
 		assertThat(Validator.validNumber(9)).isTrue();
@@ -18,7 +18,7 @@ class ValidatorTest {
 	}
 
 	@Test
-	@DisplayName("세자리_숫자인지_검증")
+	@DisplayName("세 자리 숫자만 유효하다")
 	void three_digit_number() {
 		assertThat(Validator.validSize(3, Lists.newArrayList(1, 2, 3))).isTrue();
 		assertThat(Validator.validSize(3, Lists.newArrayList(1, 2))).isFalse();
@@ -27,7 +27,7 @@ class ValidatorTest {
 	}
 
 	@Test
-	@DisplayName("중복_검증")
+	@DisplayName("중복이 아니면 유효하다")
 	void not_duplicate() {
 		assertThat(Validator.validNotDuplicate(Lists.newArrayList(1, 2, 3, 4, 5))).isTrue();
 		assertThat(Validator.validNotDuplicate(Lists.newArrayList(1, 2, 2))).isFalse();
