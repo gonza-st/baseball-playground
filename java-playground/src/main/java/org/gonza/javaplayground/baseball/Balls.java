@@ -6,11 +6,11 @@ import java.util.List;
 public class Balls {
 	private final List<Ball> ballList;
 
-	public Balls(ArrayList<Integer> answerList) {
+	public Balls(List<Integer> answerList) {
 		this.ballList = convertToBallList(answerList);
 	}
 
-	private static List<Ball> convertToBallList(ArrayList<Integer> answerList) {
+	private static List<Ball> convertToBallList(List<Integer> answerList) {
 		List<Ball> ballList = new ArrayList<>();
 
 		for (int i = 0; i < answerList.size(); i++) {
@@ -19,7 +19,7 @@ public class Balls {
 		return ballList;
 	}
 
-	public PlayResult play(ArrayList<Integer> targetBallList) {
+	public PlayResult play(List<Integer> targetBallList) {
 		Balls targetBalls = new Balls(targetBallList);
 		PlayResult playResult = new PlayResult();
 
