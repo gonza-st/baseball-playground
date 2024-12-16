@@ -19,6 +19,18 @@ public class Balls {
 		return ballList;
 	}
 
+	public PlayResult play(ArrayList<Integer> targetBallList) {
+		Balls targetBalls = new Balls(targetBallList);
+		PlayResult playResult = new PlayResult();
+
+		this.ballList.forEach(ball -> {
+			BallResult ballResult = targetBalls.play(ball);
+			playResult.report(ballResult);
+		});
+
+		return playResult;
+	}
+
 	public BallResult play(Ball targetBall) {
 		return this.ballList.stream()
 			.map(ball -> ball.play(targetBall))
