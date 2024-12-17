@@ -12,7 +12,7 @@ class NumberGeneratorTest {
 
     @BeforeEach
     void setUp() {
-        numberGenerator = new FixNumberGenerator();
+        numberGenerator = NumberGeneratorFixture.getGenerator();
     }
 
     @DisplayName("숫자 야구 번호를 생성하면 BaseballGameNumber가 생성된다")
