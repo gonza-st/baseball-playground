@@ -15,7 +15,10 @@ public class OutputView {
             System.out.println(strikeCount + "스트라이크");
             return;
         }
-        System.out.println(ballCount + "볼");
+        if (ballCount > 0) {
+            System.out.println(ballCount + "볼");
+        }
+        System.out.println("아웃");
     }
 
     public static void printSelectRetry() {
