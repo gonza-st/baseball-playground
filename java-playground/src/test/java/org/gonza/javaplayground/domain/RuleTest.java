@@ -88,4 +88,16 @@ class RuleTest {
                 .hasMessage("입력한 값에 숫자가 포함되어있지 않습니다");
     }
 
+    @Test
+    void 재시작_플래그를_입력하면_재시작_여부_결과가_참이다() {
+        String restartFlag = "1";
+        String anyFlag = "9";
+        Rule rule = new Rule();
+
+        Boolean isRestart = rule.isRestart(restartFlag);
+        Boolean isAnyFlag = rule.isRestart(anyFlag);
+
+        assertThat(isRestart).isTrue();
+        assertThat(isAnyFlag).isFalse();
+    }
 }
