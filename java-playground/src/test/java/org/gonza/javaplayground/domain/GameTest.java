@@ -116,6 +116,10 @@ class GameTest {
                 .thenReturn("1")
                 .thenReturn("2");
 
+        when(rule.isRestart(any()))
+                .thenReturn(true)
+                .thenReturn(false);
+
         game.start();
 
         verify(view, times(3)).requestInput();
