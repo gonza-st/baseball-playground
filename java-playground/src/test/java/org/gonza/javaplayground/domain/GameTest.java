@@ -36,7 +36,6 @@ class GameTest {
         when(inputParser.parseToList(123)).thenReturn(List.of(1,2,3));
         when(view.requestInput()).thenReturn("123");
         when(referee.isAllStrike(any())).thenReturn(true);
-        when(rule.getRestartFlag()).thenReturn("1");
 
         game.start();
 
@@ -61,7 +60,6 @@ class GameTest {
                 .thenReturn(false)
                 .thenReturn(false)
                 .thenReturn(true);
-        when(rule.getRestartFlag()).thenReturn("1");
 
         game.start();
 
@@ -82,7 +80,6 @@ class GameTest {
                 .when(rule).validateNumber(secondInput);
         when(inputParser.parseToList(secondInput)).thenReturn(List.of(1,2,3));
         when(referee.isAllStrike(any())).thenReturn(true);
-        when(rule.getRestartFlag()).thenReturn("1");
 
         game.start();
 
@@ -117,9 +114,7 @@ class GameTest {
 
         when(view.restartOrExit())
                 .thenReturn("1")
-                .thenReturn("2"); // 게임 재시작
-
-        when(rule.getRestartFlag()).thenReturn("1");
+                .thenReturn("2");
 
         game.start();
 

@@ -90,4 +90,14 @@ class RefereeTest {
         assertThat(resultList3.get(1)).isInstanceOf(Ball.class);
     }
 
+    @Test
+    void 배열이_비어있다면_스트라이크의_결과는_거짓이다() {
+        List<Result> resultList = List.of();
+        Referee referee = new Referee();
+
+        boolean isAllStrike = referee.isAllStrike(resultList);
+
+        assertThat(isAllStrike).isFalse();
+    }
+
 }

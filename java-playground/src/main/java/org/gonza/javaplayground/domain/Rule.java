@@ -50,8 +50,8 @@ public class Rule {
         return MAX_SIZE;
     }
 
-    public String getRestartFlag() {
-        return RESTART_FLAG;
+    public Boolean isRestart(String flag) {
+        return flag.equals(RESTART_FLAG);
     }
 
     public String getExitFlag() {

@@ -78,7 +78,7 @@ public class Game {
         while (true) {
             try {
                 rule.validateRestartOrExitFlag(input);
-                return rule.getRestartFlag().equals(input);
+                return rule.isRestart(input);
             } catch (InvalidLengthException e) {
                 view.printErrorMessage(e.getMessage());
             }

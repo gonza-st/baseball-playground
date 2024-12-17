@@ -32,6 +32,9 @@ public class Referee {
     }
 
     public boolean isAllStrike(List<Result> resultList) {
+        if (resultList.isEmpty()) {
+            return false;
+        }
         return resultList.stream().allMatch(result -> result instanceof Strike);
     }
 
