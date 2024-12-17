@@ -10,11 +10,11 @@ public class JavaPlaygroundApplication {
 		RandomNumberGenerator numberGenerator = new RandomNumberGenerator();
 		BaseballGame baseballGame = new BaseballGame(numberGenerator);
 
-		int isContinue = 1;
-		while (isContinue == 1) {
+		int continueFlag = 1;
+		while (continueFlag == 1) {
 			baseballGame.init();
 			baseballGameRun(baseballGame);
-			isContinue = OutputView.gameResultView();
+			continueFlag = InputView.inputRetryNumber();
 		}
 	}
 
