@@ -10,6 +10,10 @@ class BallPark {
     fun play() {
         val target = generateNumber()
         inning(target)
+
+        if (shouldReplayGame()) {
+            play()
+        }
     }
 
     private fun inning(target: Ball) {
@@ -18,7 +22,7 @@ class BallPark {
 
         if (isCorrect) {
             resultView.printResult(CONGRATS)
-            shouldReplayGame()
+            return
         }
 
         val scoreBoard = target.checkBall(answer)
