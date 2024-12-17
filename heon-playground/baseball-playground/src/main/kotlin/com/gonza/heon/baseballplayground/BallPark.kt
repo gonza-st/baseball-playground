@@ -48,6 +48,10 @@ class BallPark {
     private fun createHint(ballCount: Int, strikeCount: Int): String {
         val stringBuffer = StringBuffer()
 
+        if (ballCount == 0 && strikeCount == 0) {
+            stringBuffer.append("Nothing")
+        }
+
         if (ballCount > 0) {
             val ballStr = "${ballCount}볼 "
             stringBuffer.append(ballStr)
