@@ -10,7 +10,7 @@ public class BaseballGameTest {
     @DisplayName("숫자 생성기를 받아서 숫자 야구 게임을 생성한다")
     @Test
     void createWithNumberGenerator() {
-        FixNumberGenerator numberGenerator = new FixNumberGenerator();
+        NumberGenerator numberGenerator = NumberGeneratorFixture.getGenerator();
         BaseballGame baseballGame1 = new BaseballGame(numberGenerator);
         BaseballGame baseballGame2 = new BaseballGame(numberGenerator);
 
@@ -20,7 +20,7 @@ public class BaseballGameTest {
     @DisplayName("게임을 시작하면 정답 번호가 생성된다")
     @Test
     void gameStart() {
-        FixNumberGenerator numberGenerator = new FixNumberGenerator();
+        NumberGenerator numberGenerator = NumberGeneratorFixture.getGenerator();
         BaseballGame baseballGame = new BaseballGame(numberGenerator);
         baseballGame.init();
 
