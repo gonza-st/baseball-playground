@@ -17,6 +17,7 @@ public class OutputView {
         }
         if (ballCount > 0) {
             System.out.println(ballCount + "볼");
+            return;
         }
         System.out.println("아웃");
     }

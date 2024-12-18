@@ -5,13 +5,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavaPlaygroundApplication {
 
+	public static final int GAME_CONTINUE = 1;
+
 	public static void main(String[] args) {
 		// SpringApplication.run(JavaPlaygroundApplication.class, args);
 		RandomNumberGenerator numberGenerator = new RandomNumberGenerator();
 		BaseballGame baseballGame = new BaseballGame(numberGenerator);
 
-		int continueFlag = 1;
-		while (continueFlag == 1) {
+		int continueFlag = GAME_CONTINUE;
+		while (continueFlag == GAME_CONTINUE) {
 			baseballGame.init();
 			baseballGameRun(baseballGame);
 			continueFlag = InputView.inputRetryNumber();

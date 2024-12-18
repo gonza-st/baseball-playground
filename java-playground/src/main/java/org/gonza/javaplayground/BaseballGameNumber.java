@@ -16,10 +16,10 @@ public class BaseballGameNumber {
 
     public BaseballGameNumber(int number) {
         if (number > NUMBER_MAX_RANGE || number < NUMBER_MIN_RANGE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 자릿수입니다!");
         }
         if (isDuplicatedNumber(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복된 숫자는 안됩니다!");
         }
         this.number = number;
     }
@@ -38,7 +38,7 @@ public class BaseballGameNumber {
         String gameNumber = String.valueOf(number);
 
         for (int i=0; i<NUMBER_LENGTH; i++) {
-            count += compareNumbers(userNumber.charAt(i), gameNumber.charAt(i));
+            count += compareNumbers(userNumber.charAt(i), gameNumber.charAt(i)) ? 1 : 0;
         }
         return count;
     }
@@ -53,11 +53,11 @@ public class BaseballGameNumber {
             .count();
     }
 
-    private int compareNumbers(char first, char second) {
+    private boolean compareNumbers(char first, char second) {
         if (first == second) {
-            return 1;
+            return true;
         }
-        return 0;
+        return false;
     }
 
     private boolean isDuplicatedNumber(int number) {
@@ -72,7 +72,7 @@ public class BaseballGameNumber {
         try {
             return Integer.parseInt(inputNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자만 입력됩니다!");
         }
     }
 
