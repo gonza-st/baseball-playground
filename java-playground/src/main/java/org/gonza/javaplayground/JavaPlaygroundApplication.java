@@ -13,12 +13,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class JavaPlaygroundApplication {
-	private static final Integer SIZE = 3;
+	private static final Integer NUMBER_SIZE = 3;
 	private static final Integer START_NUMBER = 3;
 	private static final Integer END_NUMBER = 3;
 
 	public static void main(String[] args) {
-		Balls balls = new Balls(RandomNumberGenerator.generate(SIZE, START_NUMBER, END_NUMBER));
+		Balls balls = new Balls(RandomNumberGenerator.generate(NUMBER_SIZE, START_NUMBER, END_NUMBER));
 		boolean start = true;
 
 		while (start) {
@@ -36,7 +36,7 @@ public class JavaPlaygroundApplication {
 	}
 
 	private static void validate(List<Integer> numbers) {
-		if (!Validator.validSize(SIZE, numbers)) {
+		if (!Validator.validSize(NUMBER_SIZE, numbers)) {
 			throw new IllegalArgumentException("3글자를 입력해야 합니다.");
 		}
 
