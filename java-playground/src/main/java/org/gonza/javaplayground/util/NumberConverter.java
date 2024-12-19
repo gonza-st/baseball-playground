@@ -6,10 +6,10 @@ import java.util.List;
 public class NumberConverter {
 	public static List<Integer> convertBy(String string) {
 		List<Integer> numbers = new ArrayList<>();
-		String[] strings = string.split("");
+		String[] splitStrings = string.split("");
 
-		for (String s : strings) {
-			numbers.add(Integer.parseInt(s));
+		for (String splitString : splitStrings) {
+			numbers.add(Integer.parseInt(splitString));
 		}
 
 		return numbers;
