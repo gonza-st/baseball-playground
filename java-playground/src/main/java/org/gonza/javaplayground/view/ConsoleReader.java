@@ -15,8 +15,8 @@ public class ConsoleReader implements Reader {
     public String read() {
         String input = scanner.nextLine();
         Validator.validateNumeric(input);
-        Validator.validateDuplication(input);
         Validator.validateLength(input);
+        Validator.validateDuplication(input);
 
         return input;
     }
