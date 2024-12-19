@@ -91,7 +91,7 @@ class BaseballGameTest {
             assertThat(numbers).doesNotHaveDuplicates();
             assertThat(numbers).allMatch(n -> n >= 1 && n <= 9);
         }
-        assertThat(generatedNumbers).hasSize(5); // 모든 숫자가 달라야 함
+        assertThat(generatedNumbers).hasSize(5);
     }
 
     // 테스트 헬퍼 메서드들
