@@ -1,6 +1,5 @@
 package org.gonza.javaplayground.core;
 
-import org.gonza.javaplayground.core.Judgement;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
