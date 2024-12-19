@@ -19,17 +19,17 @@ public class JavaPlaygroundApplication {
 
 	public static void main(String[] args) {
 		Balls balls = new Balls(RandomNumberGenerator.generate(NUMBER_SIZE, START_NUMBER, END_NUMBER));
-		boolean start = true;
+		boolean isStarted = true;
 
-		while (start) {
+		while (isStarted) {
 			System.out.print("숫자를 입력해 주세요 : ");
 			Scanner scanner = new Scanner(System.in);
 			List<Integer> numbers = NumberConverter.convertBy(scanner.nextLine());
 			validate(numbers);
 
 			PlayResult result = balls.play(numbers);
-			start = isStart(result);
-			balls = getBalls(balls, start, result);
+			isStarted = isStart(result);
+			balls = getBalls(balls, isStarted, result);
 		}
 
 		System.out.println("게임 종료");
