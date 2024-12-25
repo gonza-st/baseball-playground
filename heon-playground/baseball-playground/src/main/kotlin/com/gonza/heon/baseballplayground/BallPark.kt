@@ -1,13 +1,11 @@
 package com.gonza.heon.baseballplayground
 
-import java.util.*
-
 class BallPark(
     private val inputView: InputView = InputView.getInstance(),
     private val resultView: ResultView = ResultView.getInstance(),
 ) {
     fun play() {
-        val target = generateNumber()
+        val target = NumberGenerator.generate()
         inning(target)
 
         if (shouldReplayGame()) {
@@ -31,18 +29,6 @@ class BallPark(
         return inning(target)
     }
 
-    private fun generateNumber(): Ball {
-        val random = Random()
-        val strBuffer = StringBuffer()
-
-        for (i in 0 until NUMBER_LENGTH) {
-            val digit = random.nextInt(10)
-            strBuffer.append(digit)
-        }
-        val target = strBuffer.toString()
-
-        return Ball(target)
-    }
 
     private fun createHint(ballCount: Int, strikeCount: Int): String {
         val stringBuffer = StringBuffer()
@@ -79,8 +65,7 @@ class BallPark(
     }
 
     companion object {
-        private const val NUMBER_LENGTH = 3
-        private const val CONGRATS = "${NUMBER_LENGTH}의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+        private const val CONGRATS = "${BaseballConstants.NUMBER_LENGTH}의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
         private const val REPLAY = 1
         private const val GAME_OVER = 2
     }
