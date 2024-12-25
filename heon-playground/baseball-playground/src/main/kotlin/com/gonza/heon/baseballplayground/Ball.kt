@@ -12,39 +12,16 @@ data class Ball(
 
     fun checkBall(answer: String): ScoreBoard {
         for (index in answer.indices) {
-            checkDigit(index = index, answer = answer)
-            checkDigitIndex(index = index, answer = answer)
+//            checkDigit(index = index, answer = answer)
+//            checkDigitIndex(index = index, answer = answer)
         }
 
         val scoreBoard = ScoreBoard(
             ballCount = ballCount,
             strikeCount = strikeCount,
         )
-        clearCount()
+//        clearCount()
 
         return scoreBoard
-    }
-
-    private fun checkDigit(index: Int, answer: String) {
-        val digit = answer[index]
-
-        if (digit in number) {
-            ballCount++
-        }
-    }
-
-    private fun checkDigitIndex(index: Int, answer: String) {
-        val digit = answer[index]
-        val target = number[index]
-
-        if (digit == target) {
-            strikeCount++
-            ballCount--
-        }
-    }
-
-    private fun clearCount() {
-        ballCount = 0
-        strikeCount = 0
     }
 }

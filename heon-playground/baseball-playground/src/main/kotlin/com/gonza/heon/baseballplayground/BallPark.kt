@@ -3,6 +3,7 @@ package com.gonza.heon.baseballplayground
 class BallPark(
     private val inputView: InputView = InputView.getInstance(),
     private val resultView: ResultView = ResultView.getInstance(),
+    private val validator: Validator,
 ) {
     fun play() {
         val target = NumberGenerator.generate()
@@ -13,9 +14,9 @@ class BallPark(
         }
     }
 
-    private fun inning(target: Ball) {
+    private fun inning(target: String) {
         val answer = inputView.answer()
-        val isCorrect = target.isEquals(answer)
+        val isCorrect = validator.isCorrect(target, answer)
 
         if (isCorrect) {
             resultView.printResult(CONGRATS)
@@ -65,7 +66,8 @@ class BallPark(
     }
 
     companion object {
-        private const val CONGRATS = "${BaseballConstants.NUMBER_LENGTH}의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+        private const val CONGRATS =
+            "${BaseballConstants.NUMBER_LENGTH}의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
         private const val REPLAY = 1
         private const val GAME_OVER = 2
     }
