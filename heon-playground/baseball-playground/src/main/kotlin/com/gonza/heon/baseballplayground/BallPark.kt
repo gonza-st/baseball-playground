@@ -2,11 +2,10 @@ package com.gonza.heon.baseballplayground
 
 import java.util.*
 
-class BallPark {
-
-    private val inputView = InputView.getInstance()
-    private val resultView = ResultView.getInstance()
-
+class BallPark(
+    private val inputView: InputView = InputView.getInstance(),
+    private val resultView: ResultView = ResultView.getInstance(),
+) {
     fun play() {
         val target = generateNumber()
         inning(target)
