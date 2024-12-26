@@ -24,8 +24,8 @@ class BaseballGameRuleTest {
     @DisplayName("숫자를 정확히 맞추면 승리한다")
     void correctGuessResultsInWin() {
         // given
-        List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
-        List<Integer> playerNumbers = Arrays.asList(1, 2, 3);
+        Numbers computerNumbers = new Numbers(Arrays.asList(1, 2, 3));
+        Numbers playerNumbers = new Numbers(Arrays.asList(1, 2, 3));
 
         // when
         GameResult result = baseballGameRule.guess(computerNumbers, playerNumbers);
@@ -39,8 +39,8 @@ class BaseballGameRuleTest {
     @DisplayName("스트라이크와 볼이 섞여있는 경우")
     void mixedStrikeAndBall() {
         // given
-        List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
-        List<Integer> playerNumbers = Arrays.asList(1, 3, 2);
+        Numbers computerNumbers = new Numbers(Arrays.asList(1, 2, 3));
+        Numbers playerNumbers = new Numbers(Arrays.asList(1, 3, 2));
 
         // when
         GameResult result = baseballGameRule.guess(computerNumbers, playerNumbers);
@@ -54,8 +54,8 @@ class BaseballGameRuleTest {
     @DisplayName("볼만 있는 경우")
     void onlyBalls() {
         // given
-        List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
-        List<Integer> playerNumbers = Arrays.asList(3, 1, 2);
+        Numbers computerNumbers = new Numbers(Arrays.asList(1, 2, 3));
+        Numbers playerNumbers = new Numbers(Arrays.asList(3, 1, 2));
 
         // when
         GameResult result = baseballGameRule.guess(computerNumbers, playerNumbers);
@@ -69,8 +69,8 @@ class BaseballGameRuleTest {
     @DisplayName("숫자를 전혀 맞추지 못하면 아웃이 된다")
     void noMatchResultsInOut() {
         // given
-        List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
-        List<Integer> playerNumbers = Arrays.asList(4, 5, 6);
+        Numbers computerNumbers = new Numbers(Arrays.asList(1, 2, 3));
+        Numbers playerNumbers = new Numbers(Arrays.asList(4, 5, 6));
 
         // when
         GameResult result = baseballGameRule.guess(computerNumbers, playerNumbers);
@@ -84,24 +84,28 @@ class BaseballGameRuleTest {
     @DisplayName("생성된 숫자는 1부터 9까지의 서로 다른 3개의 숫자이다")
     void generateValidNumbers() {
         // when
-        List<Integer> numbers = baseballGameRule.generateNumbers();
+        Numbers numbers = baseballGameRule.generateNumbers();
 
         // then
-        assertThat(numbers).hasSize(3);
-        assertThat(numbers).doesNotHaveDuplicates();
-        assertThat(numbers).allMatch(n -> n >= 1 && n <= 9);
+        assertThat(numbers.values()).hasSize(3);
+        assertThat(numbers.values()).doesNotHaveDuplicates();
+        assertThat(numbers.values()).allMatch(n -> n >= 1 && n <= 9);
     }
 
     @Test
     @DisplayName("생성된 숫자는 매번 다르다")
     void generateDifferentNumbers() {
         // when
-        List<Integer> firstNumbers = baseballGameRule.generateNumbers();
-        List<Integer> secondNumbers = baseballGameRule.generateNumbers();
-        List<Integer> thirdNumbers = baseballGameRule.generateNumbers();
+        Numbers firstNumbers = baseballGameRule.generateNumbers();
+        Numbers secondNumbers = baseballGameRule.generateNumbers();
+        Numbers thirdNumbers = baseballGameRule.generateNumbers();
 
         // then
-        List<List<Integer>> allGeneratedNumbers = Arrays.asList(firstNumbers, secondNumbers, thirdNumbers);
+        List<List<Integer>> allGeneratedNumbers = Arrays.asList(
+                firstNumbers.values(),
+                secondNumbers.values(),
+                thirdNumbers.values()
+        );
         assertThat(allGeneratedNumbers).doesNotHaveDuplicates();
     }
 }

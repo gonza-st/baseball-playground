@@ -15,11 +15,9 @@ public class JudgementTest {
 
         //given
         Judgement judgement = getJudgement();
-        List<Integer> computerNumbers = List.of(1, 2, 3);
-        List<Integer> playerNumbers = List.of(1, 2, 3);
 
         //when
-        String result = judgement.compareNumber(computerNumbers, playerNumbers);
+        String result = judgement.compareNumber(new Numbers(List.of(1, 2, 3)), new Numbers(List.of(1, 2, 3)));
 
         //then
         assertThat(result).isNotBlank();
@@ -33,11 +31,8 @@ public class JudgementTest {
         //given
         Judgement judgement = getJudgement();
 
-        List<Integer> computerNumbers = List.of(1, 2, 3);
-        List<Integer> playerNumbers = List.of(4, 1, 5);
-
         //when
-        String result = judgement.compareNumber(computerNumbers, playerNumbers);
+        String result = judgement.compareNumber(new Numbers(List.of(1, 2, 3)), new Numbers(List.of(4, 1, 5)));
 
         //then
         assertThat(result).isEqualTo("1볼");
@@ -50,11 +45,8 @@ public class JudgementTest {
         //given
         Judgement judgement = getJudgement();
 
-        List<Integer> computerNumbers = List.of(1, 2, 3);
-        List<Integer> playerNumbers = List.of(1, 4, 5);
-
         //when
-        String result = judgement.compareNumber(computerNumbers, playerNumbers);
+        String result = judgement.compareNumber(new Numbers(List.of(1, 2, 3)), new Numbers(List.of(1, 4, 5)));
 
         //then
         assertThat(result).isEqualTo("1스트라이크");
@@ -67,11 +59,8 @@ public class JudgementTest {
         //given
         Judgement judgement = getJudgement();
 
-        List<Integer> computerNumbers = List.of(1, 2, 3);
-        List<Integer> playerNumbers = List.of(1, 3, 5);
-
         //when
-        String result = judgement.compareNumber(computerNumbers, playerNumbers);
+        String result = judgement.compareNumber(new Numbers(List.of(1, 2, 3)), new Numbers(List.of(1, 3, 5)));
 
         //then
         assertThat(result).isEqualTo("1볼 1스트라이크");

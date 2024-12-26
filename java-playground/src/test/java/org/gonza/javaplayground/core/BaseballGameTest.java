@@ -22,7 +22,7 @@ class BaseballGameTest {
     @DisplayName("숫자를 맞추면 승리한다")
     void winWhenGuessCorrectly() {
         // given
-        List<Integer> computerNumbers = getComputerNumbersFromGame();
+        Numbers computerNumbers = getComputerNumbersFromGame();
 
         // when
         GameResult result = game.guess(computerNumbers);
@@ -36,11 +36,11 @@ class BaseballGameTest {
     @DisplayName("재시작하면 새로운 숫자를 생성한다")
     void generateNewNumbersOnRestart() {
         // given
-        List<Integer> originalNumbers = getComputerNumbersFromGame();
+        Numbers originalNumbers = getComputerNumbersFromGame();
 
         // when
         game.restart();
-        List<Integer> newNumbers = getComputerNumbersFromGame();
+        Numbers newNumbers = getComputerNumbersFromGame();
 
         // then
         assertThat(newNumbers).isNotEqualTo(originalNumbers);
@@ -50,8 +50,8 @@ class BaseballGameTest {
     @DisplayName("부분적으로 맞추면 게임이 계속된다")
     void continueGameOnPartialMatch() {
         // given
-        List<Integer> computerNumbers = getComputerNumbersFromGame();
-        List<Integer> partialMatch = generatePartialMatch(computerNumbers);
+        Numbers computerNumbers = getComputerNumbersFromGame();
+        Numbers partialMatch = generatePartialMatch(computerNumbers);
 
         // when
         GameResult result = game.guess(partialMatch);
@@ -65,8 +65,8 @@ class BaseballGameTest {
     @DisplayName("전혀 다른 숫자를 입력하면 아웃이 된다")
     void getOutOnCompletelyDifferentNumbers() {
         // given
-        List<Integer> computerNumbers = getComputerNumbersFromGame();
-        List<Integer> completelyDifferent = generateCompletelyDifferentNumbers(computerNumbers);
+        Numbers computerNumbers = getComputerNumbersFromGame();
+        Numbers completelyDifferent = generateCompletelyDifferentNumbers(computerNumbers);
 
         // when
         GameResult result = game.guess(completelyDifferent);
@@ -83,25 +83,23 @@ class BaseballGameTest {
         Set<List<Integer>> generatedNumbers = new HashSet<>();
         for (int i = 0; i < 5; i++) {
             game.restart();
-            List<Integer> numbers = getComputerNumbersFromGame();
-            generatedNumbers.add(numbers);
+            Numbers numbers = getComputerNumbersFromGame();
+            generatedNumbers.add(numbers.values());
 
             // then
-            assertThat(numbers).hasSize(3);
-            assertThat(numbers).doesNotHaveDuplicates();
-            assertThat(numbers).allMatch(n -> n >= 1 && n <= 9);
+            assertThat(numbers.values()).hasSize(3);
+            assertThat(numbers.values()).doesNotHaveDuplicates();
+            assertThat(numbers.values()).allMatch(n -> n >= 1 && n <= 9);
         }
         assertThat(generatedNumbers).hasSize(5);
     }
 
-    // 테스트 헬퍼 메서드들
-    private List<Integer> getComputerNumbersFromGame() {
-        // 컴퓨터의 숫자를 알아내기 위한 모든 가능한 조합 시도
+    private Numbers getComputerNumbersFromGame() {
         for (int i = 1; i <= 9; i++) {
             for (int j = 1; j <= 9; j++) {
                 for (int k = 1; k <= 9; k++) {
                     if (i != j && j != k && i != k) {
-                        List<Integer> guess = Arrays.asList(i, j, k);
+                        Numbers guess = new Numbers(Arrays.asList(i, j, k));
                         GameResult result = game.guess(guess);
                         if (result.isGameWon()) {
                             return guess;
@@ -113,26 +111,25 @@ class BaseballGameTest {
         throw new IllegalStateException("컴퓨터 숫자를 찾을 수 없습니다");
     }
 
-    private List<Integer> generatePartialMatch(List<Integer> numbers) {
-        // 한 자리만 다른 숫자 생성
-        List<Integer> partial = new ArrayList<>(numbers);
+    private Numbers generatePartialMatch(Numbers numbers) {
+        List<Integer> partial = new ArrayList<>(numbers.values());
         for (int i = 1; i <= 9; i++) {
-            if (!numbers.contains(i)) {
+            if (!numbers.values().contains(i)) {
                 partial.set(0, i);
                 break;
             }
         }
-        return partial;
+        return new Numbers(partial);
     }
 
-    private List<Integer> generateCompletelyDifferentNumbers(List<Integer> numbers) {
-        List<Integer> different = new ArrayList<>();
+    private Numbers generateCompletelyDifferentNumbers(Numbers numbers) {
+        List<Integer> differentNumberList = new ArrayList<>();
         for (int i = 1; i <= 9; i++) {
-            if (!numbers.contains(i)) {
-                different.add(i);
-                if (different.size() == 3) break;
+            if (!numbers.values().contains(i)) {
+                differentNumberList.add(i);
+                if (differentNumberList.size() == 3) break;
             }
         }
-        return different;
+        return new Numbers(differentNumberList);
     }
 }

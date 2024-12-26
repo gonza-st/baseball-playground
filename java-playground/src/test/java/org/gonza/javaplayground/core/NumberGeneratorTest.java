@@ -1,11 +1,8 @@
 package org.gonza.javaplayground.core;
 
-import org.gonza.javaplayground.core.NumberGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -27,12 +24,11 @@ public class NumberGeneratorTest {
         int requestSize = 3;
 
         //when
-        List<Integer> generatedNumber = generator.generatorRandomNumber(requestSize);
+        Numbers generatedNumber = generator.generateRandomNumber(requestSize);
 
         //then
-        assertThat(generatedNumber).hasSize(requestSize);
-        assertThat(generatedNumber).doesNotHaveDuplicates();
-        assertThat(generatedNumber).allMatch(n -> n >= 1 && n <= 9);
+        assertThat(generatedNumber.values()).hasSize(requestSize);
+        assertThat(generatedNumber.values()).doesNotHaveDuplicates();
     }
 
     @Test
@@ -40,9 +36,9 @@ public class NumberGeneratorTest {
     void generateRandomNumberFailTest_invalidSize() {
         assertAll(
                 () -> assertThrows(IllegalArgumentException.class,
-                        () -> generator.generatorRandomNumber(0)),
+                        () -> generator.generateRandomNumber(0)),
                 () -> assertThrows(IllegalArgumentException.class,
-                        () -> generator.generatorRandomNumber(10))
+                        () -> generator.generateRandomNumber(10))
         );
     }
 }
