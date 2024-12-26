@@ -2,26 +2,25 @@ package org.gonza.javaplayground.core;
 
 import org.gonza.javaplayground.util.Validator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class NumberGenerator {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
 
-    public List<Integer> generatorRandomNumber(int size) {
+    public Numbers generateRandomNumber(int size) {
         Validator.validateListSize(size);
+        return new Numbers(generateUniqueNumbers(size));
+    }
 
-        List<Integer> numberList = new ArrayList<>();
+    private List<Integer> generateUniqueNumbers(int size) {
+        Set<Integer> numberSet = new HashSet<>();
         Random random = new Random();
 
-        while (numberList.size() < size) {
-            int generatedNumber = random.nextInt(MAX_NUMBER) + MIN_NUMBER;
-            if (!numberList.contains(generatedNumber)) {
-                numberList.add(generatedNumber);
-            }
+        while (numberSet.size() < size) {
+            numberSet.add(random.nextInt(MAX_NUMBER) + MIN_NUMBER);
         }
-        return numberList;
+
+        return new ArrayList<>(numberSet);
     }
 }

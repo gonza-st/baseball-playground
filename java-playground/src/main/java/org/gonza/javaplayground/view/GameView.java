@@ -1,5 +1,6 @@
 package org.gonza.javaplayground.view;
 
+import org.gonza.javaplayground.core.Numbers;
 import org.gonza.javaplayground.util.Converter;
 
 import java.util.List;
@@ -17,10 +18,12 @@ public class GameView {
         printer.print("숫자 야구 게임을 시작합니다.");
     }
 
-    public List<Integer> getPlayerInput() {
+    public Numbers getPlayerInput() {
         printer.print("숫자를 입력해주세요 : ");
         String input = reader.read();
-        return Converter.convertStringToNumberList(input);
+        List<Integer> numbers = Converter.convertStringToNumberList(input);
+
+        return new Numbers(numbers);
     }
 
     public void displayResult(String result) {

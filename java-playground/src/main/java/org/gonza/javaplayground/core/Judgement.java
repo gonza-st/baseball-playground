@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Judgement {
 
-    public String compareNumber(List<Integer> computerNumberList, List<Integer> playerNumberList) {
-        int correctCount = getPlaceHitCount(computerNumberList, playerNumberList);
-        int strike = getStrikeCount(computerNumberList, playerNumberList);
+    public String compareNumber(Numbers computerNumbers, Numbers playerNumbers) {
+        int correctCount = getPlaceHitCount(computerNumbers, playerNumbers);
+        int strike = getStrikeCount(computerNumbers, playerNumbers);
         int ball = getBallCount(correctCount, strike);
 
         String result = getResult(correctCount, strike, ball);
@@ -34,11 +34,11 @@ public class Judgement {
         return ball + "볼 " + strike + "스트라이크";
     }
 
-    private int getStrikeCount(List<Integer> computerNumberList, List<Integer> playerNumberList) {
+    private int getStrikeCount(Numbers computerNumberList, Numbers playerNumberList) {
         int strike = 0;
 
-        for (int placeIndex = 0; placeIndex < playerNumberList.size(); placeIndex++) {
-            if (hasNumberInPlace(computerNumberList, placeIndex, playerNumberList.get(placeIndex))) {
+        for (int placeIndex = 0; placeIndex < playerNumberList.values().size(); placeIndex++) {
+            if (hasNumberInPlace(computerNumberList.values(), placeIndex, playerNumberList.values().get(placeIndex))) {
                 strike++;
             }
         }
@@ -49,10 +49,10 @@ public class Judgement {
         return correctCount - strike;
     }
 
-    private int getPlaceHitCount(List<Integer> computerNumberList, List<Integer> playerNumberList) {
+    private int getPlaceHitCount(Numbers computerNumberList, Numbers playerNumberList) {
         int count = 0;
-        for (int player : playerNumberList) {
-            if (computerNumberList.contains(player)) {
+        for (int player : playerNumberList.values()) {
+            if (computerNumberList.values().contains(player)) {
                 count++;
             }
         }

@@ -2,8 +2,6 @@ package org.gonza.javaplayground.core;
 
 import org.gonza.javaplayground.view.GameView;
 
-import java.util.List;
-
 public class BaseballGameManager {
     private final BaseballGame game;
     private final GameView view;
@@ -33,8 +31,8 @@ public class BaseballGameManager {
     }
 
     private void playOneRound() {
-        List<Integer> playerNumbers = view.getPlayerInput();
-        GameResult gameResult = game.guess(playerNumbers);
+        Numbers playerNumberList = view.getPlayerInput();
+        GameResult gameResult = game.guess(playerNumberList);
         view.displayResult(gameResult.result());
 
         if (!gameResult.isGameWon()) return;
