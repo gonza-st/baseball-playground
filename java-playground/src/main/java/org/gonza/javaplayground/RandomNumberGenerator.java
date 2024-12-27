@@ -4,29 +4,28 @@ import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerator {
 
-    public static final int FIRST_POSITION = 100;
-    public static final int SECOND_POSITION = 10;
-    public static final int THIRD_POSITION = 1;
+    public static final int DEFAULT_POSITION = 10;
     public static final int CALIBRATE_NUMBER = 1;
     private final Random RANDOM = new Random();
-    private final int NUMBER_RANGE = 9;
 
     @Override
-    public BaseballGameNumber generate() {
-        int first = generateNumber(FIRST_POSITION);
-        int second = generateNumber(SECOND_POSITION);
-        int third = generateNumber(THIRD_POSITION);
+    public BaseballGameNumber generate(int digit) {
+        int initPosition = DEFAULT_POSITION * digit;
 
-        int number = first + second + third;
+        int number = 0;
+        while (initPosition > 0) {
+            number += generateNumber(initPosition);
+            initPosition /= 10;
+        }
 
-        return toBaseballGameNumber(number);
+        return toBaseballGameNumber(number, digit);
     }
 
-    private BaseballGameNumber toBaseballGameNumber(int number) {
+    private BaseballGameNumber toBaseballGameNumber(int number, int digit) {
         try {
             return new BaseballGameNumber(number);
         } catch (IllegalArgumentException e) {
-            return generate();
+            return generate(digit);
         }
     }
 
