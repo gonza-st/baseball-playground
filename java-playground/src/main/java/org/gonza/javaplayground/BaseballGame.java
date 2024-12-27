@@ -20,7 +20,7 @@ public class BaseballGame {
     }
 
     public void init() {
-        correctNumber = numberGenerator.generate();
+        correctNumber = numberGenerator.generate(3);
     }
 
     public int getStrikeCount(BaseballGameNumber userNumber) {
