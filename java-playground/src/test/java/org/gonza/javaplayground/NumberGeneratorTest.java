@@ -18,7 +18,7 @@ class NumberGeneratorTest {
     @DisplayName("숫자 야구 번호를 생성하면 BaseballGameNumber가 생성된다")
     @Test
     void generate() {
-        BaseballGameNumber generatedNumber = numberGenerator.generate();
+        BaseballGameNumber generatedNumber = numberGenerator.generate(3);
 
         BaseballGameNumber expectedValue = new BaseballGameNumber(123);
         assertThat(generatedNumber).isEqualTo(expectedValue);

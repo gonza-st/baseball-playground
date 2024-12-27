@@ -7,7 +7,7 @@ public class NumberGeneratorFixture implements NumberGenerator {
     }
 
     @Override
-    public BaseballGameNumber generate() {
+    public BaseballGameNumber generate(int digit) {
         return new BaseballGameNumber(123);
     }
 }
