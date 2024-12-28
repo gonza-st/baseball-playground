@@ -23,4 +23,14 @@ class Validator {
             throw IllegalArgumentException("Number length must be greater than $BaseballConstants.NUMBER_LENGTH")
         }
     }
+
+    fun checkFlag(target: String) {
+        if (target.length > 1 || target.isBlank()) {
+            throw IllegalArgumentException("Flag length must be between 1")
+        }
+
+        if (!target.first().isDigit()) {
+            throw IllegalArgumentException("Flag must be a Number")
+        }
+    }
 }

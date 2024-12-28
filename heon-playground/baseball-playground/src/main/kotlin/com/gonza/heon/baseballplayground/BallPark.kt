@@ -1,74 +1,61 @@
 package com.gonza.heon.baseballplayground
 
 class BallPark(
-    private val inputView: InputView = InputView.getInstance(),
-    private val resultView: ResultView = ResultView.getInstance(),
     private val validator: Validator,
+    private val inputView: InputView,
+    private val resultView: ResultView,
 ) {
     fun play() {
         val target = NumberGenerator.generate()
-        inning(target)
+        val scoreBoard = ScoreBoard()
+        inning(ball = target, scoreBoard = scoreBoard)
 
         if (shouldReplayGame()) {
             play()
         }
     }
 
-    private fun inning(target: String) {
+    fun inning(ball: String, scoreBoard: ScoreBoard) {
         val answer = inputView.answer()
-        val isCorrect = validator.isCorrect(target, answer)
+        validator.checkNumberLength(answer)
 
+        counting(ball = ball, answer = answer, scoreBoard = scoreBoard)
+
+        val isCorrect = validator.isCorrect(ball, answer)
         if (isCorrect) {
-            resultView.printResult(CONGRATS)
+            resultView.printResult(BaseballConstants.CONGRATS)
             return
         }
 
-        val scoreBoard = target.checkBall(answer)
-        val hint = createHint(ballCount = scoreBoard.ballCount, strikeCount = scoreBoard.strikeCount)
-        resultView.printResult(hint)
+        resultView.printResult(scoreBoard.hint())
+        scoreBoard.clearCount()
 
-        return inning(target)
+        return inning(ball = ball, scoreBoard = scoreBoard)
     }
 
+    private fun counting(ball: String, answer: String, scoreBoard: ScoreBoard) {
+        for (index in answer.indices) {
+            val isBall = validator.checkNumber(index = index, target = ball, answer = answer)
+            val isStrike = validator.checkDigit(index = index, target = ball, answer = answer)
 
-    private fun createHint(ballCount: Int, strikeCount: Int): String {
-        val stringBuffer = StringBuffer()
-
-        if (ballCount == 0 && strikeCount == 0) {
-            stringBuffer.append("Nothing")
+            if (isBall) scoreBoard.increaseBallCount()
+            if (isStrike) {
+                scoreBoard.decreaseBallCount()
+                scoreBoard.increaseStrikeCount()
+            }
         }
+    }
 
-        if (ballCount > 0) {
-            val ballStr = "${ballCount}볼 "
-            stringBuffer.append(ballStr)
-        }
+    private fun getReplayFlag(): Int {
+        val input = inputView.answer()
+        validator.checkFlag(input)
 
-        if (strikeCount > 0) {
-            val strikeStr = "${strikeCount}스트라이크"
-            stringBuffer.append(strikeStr)
-        }
-
-        return stringBuffer.toString()
+        val digit = input.first().digitToInt()
+        return digit
     }
 
     private fun shouldReplayGame(): Boolean {
-        // TODO INPUT_MESSAGE
-        val input = inputView.answer()
-        val isInvalid = input.length > 1 || input.isBlank()
-
-        if (isInvalid) return shouldReplayGame()
-
-        val digit = input.first()
-        if (!digit.isDigit()) return shouldReplayGame()
-        if (digit.digitToInt() == REPLAY) return true
-
-        return false
-    }
-
-    companion object {
-        private const val CONGRATS =
-            "${BaseballConstants.NUMBER_LENGTH}의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
-        private const val REPLAY = 1
-        private const val GAME_OVER = 2
+        val flag = getReplayFlag()
+        return flag == BaseballConstants.REPLAY_FLAG
     }
 }

@@ -8,7 +8,14 @@ class BaseballPlaygroundApplication
 
 fun main(args: Array<String>) {
 //    runApplication<BaseballPlaygroundApplication>(*args)
-    val ballPark = BallPark()
+    val validator = Validator()
+    val inputView = InputView.getInstance()
+    val resultView = ResultView.getInstance()
+    val ballPark = BallPark(
+        validator = validator,
+        inputView = inputView,
+        resultView = resultView
+    )
 
     ballPark.play()
 }

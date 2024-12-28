@@ -3,7 +3,7 @@ package com.gonza.heon.baseballplayground
 import java.util.*
 
 object NumberGenerator {
-    fun generate(): Ball {
+    fun generate(): String {
         val random = Random()
         val strBuffer = StringBuffer()
 
@@ -13,7 +13,7 @@ object NumberGenerator {
         }
         val target = strBuffer.toString()
 
-        return Ball(target)
+        return target
     }
 
 }
