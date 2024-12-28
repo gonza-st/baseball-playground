@@ -1,7 +1,7 @@
 package org.gonza.javaplayground.view;
 
 public interface Reader {
-    String read();
+    String readWithValidation();
 
-    String readWithoutValidation();
+    String read();
 }

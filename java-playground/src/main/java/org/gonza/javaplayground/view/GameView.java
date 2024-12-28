@@ -20,7 +20,7 @@ public class GameView {
 
     public Numbers getPlayerInput() {
         printer.print("숫자를 입력해주세요 : ");
-        String input = reader.read();
+        String input = reader.readWithValidation();
         List<Integer> numbers = Converter.convertStringToNumberList(input);
 
         return new Numbers(numbers);
@@ -44,7 +44,7 @@ public class GameView {
 
     public int getRetryChoice() {
         printer.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = reader.readWithoutValidation();
+        String input = reader.read();
         return Integer.parseInt(input);
     }
 

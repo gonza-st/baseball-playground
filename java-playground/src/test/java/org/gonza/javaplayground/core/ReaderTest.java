@@ -31,7 +31,7 @@ public class ReaderTest {
         ConsoleReader reader = createReader("123");
 
         //when
-        String expect = reader.read();
+        String expect = reader.readWithValidation();
 
         //then
         assertThat(expect).isEqualTo("123");
@@ -51,7 +51,7 @@ public class ReaderTest {
         ConsoleReader reader = createReader(invalidInput);
 
         //when & then
-        assertThrows(IllegalArgumentException.class, () -> reader.read());
+        assertThrows(IllegalArgumentException.class, () -> reader.readWithValidation());
     }
 
     @DisplayName("입력 받은 숫자가 3자리가 아닐시 예외")
@@ -67,7 +67,7 @@ public class ReaderTest {
         ConsoleReader reader = createReader(invalidInput);
 
         //when & then
-        assertThrows(IllegalArgumentException.class, () -> reader.read());
+        assertThrows(IllegalArgumentException.class, () -> reader.readWithValidation());
     }
 
     @DisplayName("입력 받은 숫자에 중복이 있을시 예외")
@@ -82,7 +82,7 @@ public class ReaderTest {
         ConsoleReader reader = createReader(invalidInput);
 
         //when & then
-        assertThrows(IllegalArgumentException.class, () -> reader.read());
+        assertThrows(IllegalArgumentException.class, () -> reader.readWithValidation());
     }
 
     private ConsoleReader createReader(String input) {

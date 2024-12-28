@@ -12,7 +12,7 @@ public class ConsoleReader implements Reader {
     }
 
     @Override
-    public String read() {
+    public String readWithValidation() {
         String input = scanner.nextLine();
         Validator.validateNumeric(input);
         Validator.validateLength(input);
@@ -22,7 +22,7 @@ public class ConsoleReader implements Reader {
     }
 
     @Override
-    public String readWithoutValidation() {
+    public String read() {
         return scanner.nextLine();
     }
 }
