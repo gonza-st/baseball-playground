@@ -4,20 +4,11 @@ import org.gonza.javaplayground.exception.*;
 
 import java.util.List;
 
-public class Rule {
+public class RuleValidator {
+    private final Rule rule;
 
-    private final int maxSize;
-
-    private final String RESTART_FLAG = "1";
-
-    private final String EXIT_FLAG = "2";
-
-    public Rule(int maxSize) {
-        this.maxSize = maxSize;
-    }
-
-    public Rule() {
-        this.maxSize = 3;
+    public RuleValidator(Rule rule) {
+        this.rule = rule;
     }
 
     public void validateLength(List<Integer> answer, List<Integer> number) {
@@ -27,6 +18,7 @@ public class Rule {
     }
 
     public void validateMaxSize(List<Integer> number) {
+        int maxSize = rule.getMaxSize();
         if (number.size() != maxSize) {
             throw new InvalidNumberLengthException("입력한 값이 3자리수가 아닙니다.");
         }
@@ -44,35 +36,5 @@ public class Rule {
         if (!input.chars().allMatch(Character::isDigit)) {
             throw new NotNumberIncludedException("입력한 값에 숫자가 포함되어있지 않습니다");
         }
-    }
-
-    public void validateRestartOrExitFlag(String input) {
-        if (!input.equals(RESTART_FLAG) && !input.equals(EXIT_FLAG)) {
-            throw new InvalidRestartOrExitFlagException("1 혹은 2 중에 입력해주세요");
-        }
-    }
-
-    public boolean completed(int size) {
-        return size == maxSize;
-    }
-
-    public boolean isOverMaxSize(int size) {
-        return size > maxSize;
-    }
-
-    public boolean isBelowMaxSize(int size) {
-        return size < maxSize;
-    }
-
-    public int getMaxSize() {
-        return maxSize;
-    }
-
-    public Boolean isRestart(String flag) {
-        return flag.equals(RESTART_FLAG);
-    }
-
-    public String getExitFlag() {
-        return EXIT_FLAG;
     }
 }

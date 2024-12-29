@@ -100,4 +100,26 @@ class RuleTest {
         assertThat(isRestart).isTrue();
         assertThat(isAnyFlag).isFalse();
     }
+
+    @Test
+    void 입력한_값이_최대_사이즈를_초과했다면_결과는_참이다() {
+        List<Integer> number = List.of(1, 2, 3, 4);
+        int maxSize = 3;
+        Rule rule = new Rule(maxSize);
+
+        boolean isOverMaxSize = rule.isOverMaxSize(number.size());
+
+        assertThat(isOverMaxSize).isTrue();
+    }
+
+    @Test
+    void 입력한_값이_최대_사이즈_미만이라면_결과는_참이다() {
+        List<Integer> number = List.of(1, 2);
+        int maxSize = 3;
+        Rule rule = new Rule(maxSize);
+
+        boolean isBelowMaxSize = rule.isBelowMaxSize(number.size());
+
+        assertThat(isBelowMaxSize).isTrue();
+    }
 }
