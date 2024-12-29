@@ -52,10 +52,6 @@ public class Rule {
         }
     }
 
-    public boolean completed(int size) {
-        return size == maxSize;
-    }
-
     public boolean isOverMaxSize(int size) {
         return size > maxSize;
     }

@@ -24,16 +24,6 @@ class RuleTest {
     }
 
     @Test
-    void 룰에_따라_값이_모두_끝났다면_결과는_참이다() {
-        List<Integer> number = List.of(1, 2, 3);
-        Rule rule = new Rule();
-
-        boolean isCompleted = rule.completed(number.size());
-
-        assertThat(isCompleted).isTrue();
-    }
-
-    @Test
     void 입력한_값이_3자리_수를_초과한다면_예외가_발생한다() {
         List<Integer> number = List.of(1, 2, 3, 4);
         Rule rule = new Rule();
