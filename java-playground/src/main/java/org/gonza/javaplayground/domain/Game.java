@@ -62,11 +62,11 @@ public class Game {
         while (true) {
             String input = view.requestInput();
             try {
-                rule.validateNumber(input);
+                rule.validateNumericInput(input);
                 List<Integer> number = inputParser.parseToList(input);
 
                 rule.validateDuplicateValue(number);
-                rule.validateMaxSize(number);
+                rule.validateRequiredSize(number);
                 return Integer.parseInt(input);
             } catch (NotNumberIncludedException | InvalidNumberLengthException | DuplicateValueException e) {
                 view.printErrorMessage(e.getMessage());

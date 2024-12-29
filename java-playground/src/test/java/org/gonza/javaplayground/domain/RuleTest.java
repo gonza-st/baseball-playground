@@ -18,7 +18,7 @@ class RuleTest {
         List<Integer> number = List.of(1, 2);
         Rule rule = new Rule();
 
-        assertThatThrownBy(() -> rule.validateLength(answer, number))
+        assertThatThrownBy(() -> rule.validateEqualLengths(answer, number))
                 .isInstanceOf(InvalidLengthException.class)
                 .hasMessage("입력값과 정답의 자릿수가 일치하지 않습니다");
     }
@@ -28,7 +28,7 @@ class RuleTest {
         List<Integer> number = List.of(1, 2, 3, 4);
         Rule rule = new Rule();
 
-        assertThatThrownBy(() -> rule.validateMaxSize(number))
+        assertThatThrownBy(() -> rule.validateRequiredSize(number))
                 .isInstanceOf(InvalidNumberLengthException.class)
                 .hasMessage("입력한 값이 3자리수가 아닙니다.");
     }
@@ -38,7 +38,7 @@ class RuleTest {
         List<Integer> number = List.of(1, 2);
         Rule rule = new Rule();
 
-        assertThatThrownBy(() -> rule.validateMaxSize(number))
+        assertThatThrownBy(() -> rule.validateRequiredSize(number))
                 .isInstanceOf(InvalidNumberLengthException.class)
                 .hasMessage("입력한 값이 3자리수가 아닙니다.");
     }
@@ -61,19 +61,19 @@ class RuleTest {
         String input4 = "12+=";
         Rule rule = new Rule();
 
-        assertThatThrownBy(() -> rule.validateNumber(input1))
+        assertThatThrownBy(() -> rule.validateNumericInput(input1))
                 .isInstanceOf(NotNumberIncludedException.class)
                 .hasMessage("입력한 값에 숫자가 포함되어있지 않습니다");
 
-        assertThatThrownBy(() -> rule.validateNumber(input2))
+        assertThatThrownBy(() -> rule.validateNumericInput(input2))
                 .isInstanceOf(NotNumberIncludedException.class)
                 .hasMessage("입력한 값에 숫자가 포함되어있지 않습니다");
 
-        assertThatThrownBy(() -> rule.validateNumber(input3))
+        assertThatThrownBy(() -> rule.validateNumericInput(input3))
                 .isInstanceOf(NotNumberIncludedException.class)
                 .hasMessage("입력한 값에 숫자가 포함되어있지 않습니다");
 
-        assertThatThrownBy(() -> rule.validateNumber(input4))
+        assertThatThrownBy(() -> rule.validateNumericInput(input4))
                 .isInstanceOf(NotNumberIncludedException.class)
                 .hasMessage("입력한 값에 숫자가 포함되어있지 않습니다");
     }
@@ -97,7 +97,7 @@ class RuleTest {
         int maxSize = 3;
         Rule rule = new Rule(maxSize);
 
-        boolean isOverMaxSize = rule.isOverMaxSize(number.size());
+        boolean isOverMaxSize = rule.isOverNumberSize(number.size());
 
         assertThat(isOverMaxSize).isTrue();
     }
@@ -108,7 +108,7 @@ class RuleTest {
         int maxSize = 3;
         Rule rule = new Rule(maxSize);
 
-        boolean isBelowMaxSize = rule.isBelowMaxSize(number.size());
+        boolean isBelowMaxSize = rule.isBelowNumberSize(number.size());
 
         assertThat(isBelowMaxSize).isTrue();
     }

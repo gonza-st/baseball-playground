@@ -19,7 +19,7 @@ public class RuleValidator {
 
     public void validateMaxSize(List<Integer> number) {
         int inputSize = number.size();
-        if (rule.isOverMaxSize(inputSize) || rule.isBelowMaxSize(inputSize)) {
+        if (rule.isOverNumberSize(inputSize) || rule.isBelowNumberSize(inputSize)) {
             throw new InvalidNumberLengthException("입력한 값이 3자리수가 아닙니다.");
         }
     }

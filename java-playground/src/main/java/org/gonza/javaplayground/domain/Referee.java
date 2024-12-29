@@ -13,7 +13,7 @@ public class Referee {
     public List<Result> judge(Answer answer, int number) {
         List<Integer> numberList = inputParser.parseToList(number);
 
-        rule.validateLength(answer.getCorrectNumber(), numberList);
+        rule.validateEqualLengths(answer.getCorrectNumber(), numberList);
 
         List<Result> resultList = new ArrayList<>();
         List<Integer> currentAnswer = new ArrayList<>(answer.getCorrectNumber());

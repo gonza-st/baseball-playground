@@ -7,7 +7,7 @@ import java.util.List;
 public class NumberGenerator {
     public int generate() {
         Rule rule = new Rule();
-        int maxSize = rule.getMaxSize();
+        int maxSize = rule.getRequiredNumberSize();
         List<Integer> digits = getShuffledDigits();
 
         StringBuilder numberBuilder = new StringBuilder();

@@ -6,28 +6,28 @@ import java.util.List;
 
 public class Rule {
 
-    private final int maxSize;
+    private final int requiredNumberSize;
 
     private final String RESTART_FLAG = "1";
 
     private final String EXIT_FLAG = "2";
 
-    public Rule(int maxSize) {
-        this.maxSize = maxSize;
+    public Rule(int requiredNumberSize) {
+        this.requiredNumberSize = requiredNumberSize;
     }
 
     public Rule() {
-        this.maxSize = 3;
+        this.requiredNumberSize = 3;
     }
 
-    public void validateLength(List<Integer> answer, List<Integer> number) {
+    public void validateEqualLengths(List<Integer> answer, List<Integer> number) {
         if (answer.size() != number.size()) {
             throw new InvalidLengthException("입력값과 정답의 자릿수가 일치하지 않습니다");
         }
     }
 
-    public void validateMaxSize(List<Integer> number) {
-        if (number.size() != maxSize) {
+    public void validateRequiredSize(List<Integer> number) {
+        if (number.size() != requiredNumberSize) {
             throw new InvalidNumberLengthException("입력한 값이 3자리수가 아닙니다.");
         }
     }
@@ -40,7 +40,7 @@ public class Rule {
         }
     }
 
-    public void validateNumber(String input) {
+    public void validateNumericInput(String input) {
         if (!input.chars().allMatch(Character::isDigit)) {
             throw new NotNumberIncludedException("입력한 값에 숫자가 포함되어있지 않습니다");
         }
@@ -52,16 +52,16 @@ public class Rule {
         }
     }
 
-    public boolean isOverMaxSize(int size) {
-        return size > maxSize;
+    public boolean isOverNumberSize(int size) {
+        return size > requiredNumberSize;
     }
 
-    public boolean isBelowMaxSize(int size) {
-        return size < maxSize;
+    public boolean isBelowNumberSize(int size) {
+        return size < requiredNumberSize;
     }
 
-    public int getMaxSize() {
-        return maxSize;
+    public int getRequiredNumberSize() {
+        return requiredNumberSize;
     }
 
     public Boolean isRestart(String flag) {
