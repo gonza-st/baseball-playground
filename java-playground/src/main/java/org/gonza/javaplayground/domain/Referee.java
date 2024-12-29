@@ -7,13 +7,14 @@ import java.util.stream.IntStream;
 public class Referee {
 
     private final Rule rule = new Rule();
+    private final RuleValidator ruleValidator = new RuleValidator(rule);
     private final InputParser inputParser = new InputParser();
     private final List<Result> orderedResultTypeList = List.of(new Strike(), new Ball());
 
     public List<Result> judge(Answer answer, int number) {
         List<Integer> numberList = inputParser.parseToList(number);
 
-        rule.validateEqualLengths(answer.getCorrectNumber(), numberList);
+        ruleValidator.validateEqualLengths(answer.getCorrectNumber(), numberList);
 
         List<Result> resultList = new ArrayList<>();
         List<Integer> currentAnswer = new ArrayList<>(answer.getCorrectNumber());

@@ -14,6 +14,7 @@ public class Game {
     private final InputParser inputParser;
     private final View view;
     private final Rule rule;
+    private final RuleValidator ruleValidator;
     private final Referee referee;
 
     public Game(
@@ -21,12 +22,14 @@ public class Game {
         InputParser inputParser,
         View view,
         Rule rule,
+        RuleValidator ruleValidator,
         Referee referee
     ) {
         this.numberGenerator = numberGenerator;
         this.inputParser = inputParser;
         this.view = view;
         this.rule = rule;
+        this.ruleValidator = ruleValidator;
         this.referee = referee;
     }
 
@@ -62,11 +65,11 @@ public class Game {
         while (true) {
             String input = view.requestInput();
             try {
-                rule.validateNumericInput(input);
+                ruleValidator.validateNumericInput(input);
                 List<Integer> number = inputParser.parseToList(input);
 
-                rule.validateDuplicateValue(number);
-                rule.validateRequiredSize(number);
+                ruleValidator.validateDuplicateValue(number);
+                ruleValidator.validateRequiredSize(number);
                 return Integer.parseInt(input);
             } catch (NotNumberIncludedException | InvalidNumberLengthException | DuplicateValueException e) {
                 view.printErrorMessage(e.getMessage());
@@ -77,7 +80,7 @@ public class Game {
     private boolean isRestart(String input) {
         while (true) {
             try {
-                rule.validateRestartOrExitFlag(input);
+                ruleValidator.validateRestartOrExitFlag(input);
                 return rule.isRestart(input);
             } catch (InvalidLengthException e) {
                 view.printErrorMessage(e.getMessage());

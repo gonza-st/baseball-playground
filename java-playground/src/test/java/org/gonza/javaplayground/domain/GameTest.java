@@ -17,6 +17,7 @@ class GameTest {
     private InputParser inputParser;
     private View view;
     private Rule rule;
+    private RuleValidator ruleValidator;
     private Referee referee;
 
     @BeforeEach
@@ -24,10 +25,11 @@ class GameTest {
         numberGenerator = mock(NumberGenerator.class);
         inputParser = mock(InputParser.class);
         rule = mock(Rule.class);
+        ruleValidator = mock(RuleValidator.class);
         referee = mock(Referee.class);
         view = mock(View.class);
 
-        game = new Game(numberGenerator, inputParser, view, rule, referee);
+        game = new Game(numberGenerator, inputParser, view, rule, ruleValidator, referee);
     }
 
     @Test
@@ -75,9 +77,9 @@ class GameTest {
         String errorMessage = "입력한 값에 숫자가 포함되어있지 않습니다";
         when(view.requestInput()).thenReturn(firstInput, secondInput);
         doThrow(new NotNumberIncludedException(errorMessage))
-                .when(rule).validateNumericInput(firstInput);
+                .when(ruleValidator).validateNumericInput(firstInput);
         doNothing()
-                .when(rule).validateNumericInput(secondInput);
+                .when(ruleValidator).validateNumericInput(secondInput);
         when(inputParser.parseToList(secondInput)).thenReturn(List.of(1,2,3));
         when(referee.isAllStrike(any())).thenReturn(true);
 

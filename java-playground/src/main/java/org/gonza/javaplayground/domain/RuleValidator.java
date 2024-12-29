@@ -39,6 +39,12 @@ public class RuleValidator {
         }
     }
 
+    public void validateRestartOrExitFlag(String input) {
+        if (!rule.isRestart(input) || !rule.isExit(input)) {
+            throw new InvalidRestartOrExitFlagException("1 혹은 2 중에 입력해주세요");
+        }
+    }
+
     private boolean isAllNumeric(String input) {
         return input.chars().allMatch(Character::isDigit);
     }

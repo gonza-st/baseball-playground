@@ -9,15 +9,17 @@ public class Client {
         InputParser inputParser = new InputParser();
         View view = new View();
         Rule rule = new Rule();
+        RuleValidator ruleValidator = new RuleValidator(rule);
         Referee referee = new Referee();
         Game game = new Game(
             numberGenerator,
             inputParser,
             view,
             rule,
+            ruleValidator,
             referee
         );
-        
+
         game.start();
     }
 }

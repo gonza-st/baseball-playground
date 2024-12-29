@@ -1,9 +1,6 @@
 package org.gonza.javaplayground.domain;
 
-import org.gonza.javaplayground.exception.DuplicateValueException;
-import org.gonza.javaplayground.exception.InvalidLengthException;
-import org.gonza.javaplayground.exception.InvalidNumberLengthException;
-import org.gonza.javaplayground.exception.NotNumberIncludedException;
+import org.gonza.javaplayground.exception.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -49,12 +46,38 @@ class RuleValidatorTest {
 
     @Test
     void 입력한_값_중에_숫자가_포함되어있지_않다면_예외가_발생합니다() {
-        String number = "12lmk";
+        String input1 = "12lmk";
+        String input2 = "12 ";
+        String input3 = "12`";
+        String input4 = "12+=";
         Rule rule = new Rule();
         RuleValidator ruleValidator = new RuleValidator(rule);
 
-        assertThatThrownBy(() -> ruleValidator.validateNumericInput(number))
+        assertThatThrownBy(() -> ruleValidator.validateNumericInput(input1))
                 .isInstanceOf(NotNumberIncludedException.class)
                 .hasMessage("입력한 값에 숫자가 포함되어있지 않습니다");
+
+        assertThatThrownBy(() -> ruleValidator.validateNumericInput(input2))
+                .isInstanceOf(NotNumberIncludedException.class)
+                .hasMessage("입력한 값에 숫자가 포함되어있지 않습니다");
+
+        assertThatThrownBy(() -> ruleValidator.validateNumericInput(input3))
+                .isInstanceOf(NotNumberIncludedException.class)
+                .hasMessage("입력한 값에 숫자가 포함되어있지 않습니다");
+
+        assertThatThrownBy(() -> ruleValidator.validateNumericInput(input4))
+                .isInstanceOf(NotNumberIncludedException.class)
+                .hasMessage("입력한 값에 숫자가 포함되어있지 않습니다");
+    }
+
+    @Test
+    void 재시작_혹은_게임종료_플래그가_아닌경우_예외가_발생한다() {
+        String anyFlag = "9";
+        Rule rule = new Rule();
+        RuleValidator ruleValidator = new RuleValidator(rule);
+
+        assertThatThrownBy(() -> ruleValidator.validateRestartOrExitFlag(anyFlag))
+                .isInstanceOf(InvalidRestartOrExitFlagException.class)
+                .hasMessage("1 혹은 2 중에 입력해주세요");
     }
 }
